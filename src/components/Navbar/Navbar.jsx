@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom'
-import Container from '../Navbar/Container'
 import logoImg from '../../assets/images/logo/logo2.png'
 import MenuDropdown from './MenuDropdown'
 import MiddleNavLinks from '../shared/MiddleNavLinks/MiddleNavLinks'
 
 const Navbar = () => {
   return (
-    <div className='fixed w-full bg-white z-10 shadow-sm'>
-      <div className='py-4 border-b-[1px]'>
-        <Container>
+    <div className='fixed w-11/12 py-2 bg-white z-10 shadow-sm'>
+      <div className=''>
           <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
             {/* Logo */}
             <Link to='/'>
@@ -25,7 +23,6 @@ const Navbar = () => {
             {/* Dropdown Menu */}
             <MenuDropdown />
           </div>
-        </Container>
       </div>
     </div>
   )

@@ -1,19 +1,24 @@
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import avatarImg from "../../assets/images/logo/placeholder.jpg";
+import Swal from "sweetalert2";
 
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigateToLogin = useNavigate()
   const { user,logOut } = useAuth();
-  const handleLogout = () =>{
+  const handleLogout = () => {
     logOut()
-    .then(swal("Nice!", "You logged out successfully!", "success"))
-    navigateToLogin('/login')
-    .catch(err => {swal(err.message)})
+      .then(() => {
+        Swal.fire("Nice!", "You logged out successfully!", "success");
+        navigateToLogin('/login');
+      })
+      .catch(err => {
+        Swal.fire("Oops!", err.message, "error");
+      });
   }
-
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
@@ -65,6 +70,7 @@ const MenuDropdown = () => {
             >
               Sign Up
             </Link>
+            <button onClick={handleLogout}  className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600">Logout</button>
           </div>
         </div>
       )}
