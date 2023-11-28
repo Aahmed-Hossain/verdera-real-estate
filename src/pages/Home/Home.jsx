@@ -1,9 +1,11 @@
 
+import PageTitle from "../../components/PageTitle/PageTitle";
+
 
 const Home = () => {
     return (
         <div >
-            <h2 className="text-5xl bg-green-100">home</h2>
+            <PageTitle title={"Verdera | Home"}></PageTitle>
         </div>
     );
 };

@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/logo-.jpg'
+import logo from '../../assets/images/logo/logo-.jpg'
 const Footer = () => {
   return (
     <footer className="bg-white dark:bg-gray-900">
       <div className="container p-6 mx-auto">
         <div className="lg:flex">
-          <div className="w-full -mx-6 lg:w-2/5">
-            <div className="px-6">
-              <Link to="#">
-                <img className="w-[16vh] h-16" src={logo} alt="" />
+          <div className="w-full lg:w-2/5 ">
+            <div className="px-6 mx-auto ">
+              <Link to="#" className='mx-auto '>
+                <img className="w-[16vh] mx-auto  h-16" src={logo} alt="" />
               </Link>
 
-              <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">Join 31,000+ others and never miss out on new tips, tutorials, and more.</p>
+              <p className="max-w-sm mt-2  mx-auto flex justify-center items-center text-gray-500 dark:text-gray-400">Verdera Real Estate Company.</p>
 
-              <div className="flex mt-6 -mx-2">
+              <div className="flex mt-6  justify-center items-center ">
                 <Link to="#" className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Reddit">
                   <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -67,7 +67,7 @@ const Footer = () => {
               <div>
                 <h3 className="text-gray-700 uppercase dark:text-white">Contact</h3>
                 <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">+1 526 654 8965</span>
-                <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">example@email.com</span>
+                <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">verdera@email.com</span>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ const Footer = () => {
         <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-700" />
 
         <div>
-          <p className="text-center text-gray-500 dark:text-gray-400">© Brand 2020 - All rights reserved</p>
+          <p className="text-center text-gray-500 dark:text-gray-400">© Brand 2023 - All rights reserved By Verdera</p>
         </div>
       </div>
     </footer>

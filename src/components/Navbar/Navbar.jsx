@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import Container from '../Navbar/Container'
-import logoImg from '../../assets/images/logo-.jpg'
+import logoImg from '../../assets/images/logo/logo2.png'
 import MenuDropdown from './MenuDropdown'
+import MiddleNavLinks from '../shared/MiddleNavLinks/MiddleNavLinks'
 
 const Navbar = () => {
   return (
@@ -12,13 +13,15 @@ const Navbar = () => {
             {/* Logo */}
             <Link to='/'>
               <img
-                className='hidden md:block'
+                className=' md:block w-[13rem]'
                 src={logoImg}
-                alt='logo'
-                width='100'
-                height='100'
+                alt='logo' 
               />
             </Link>
+            {/* middle links */}
+            <div className='font-bold'>
+            <MiddleNavLinks></MiddleNavLinks>
+            </div>
             {/* Dropdown Menu */}
             <MenuDropdown />
           </div>

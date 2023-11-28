@@ -1,0 +1,42 @@
+[
+{
+    "property_image": "https://i.ibb.co/SxPnH8Y/luxury1.jpg",
+    "property_location": "123 Main Street, Downtown City",
+    "property_title": "Luxurious Downtown Condo with Panoramic Views",
+    "property_category": "Luxury",
+    "price_range": [1200000, 1500000],
+    "verification_status": "Verified",
+    "property_area": "2,500 sq. ft.",
+    "order_count": 0,
+    "description": "Experience luxury living in this stunning condo located in the heart of the city. This spacious 3-bedroom, 3-bathroom condo offers breathtaking panoramic views of the skyline. The interior features high-end finishes, modern amenities, and a gourmet kitchen. Enjoy the convenience of city living with world-class restaurants, shopping, and entertainment at your doorstep.",
+    "agent_name": "John Doe",
+    "agent_image": "https://i.ibb.co/Yyg5YDm/staff-1-jpg.webp"
+  },
+  {
+    "property_image": "https://i.ibb.co/BGZDvKK/luxury2.jpg",
+    "property_location": "456  Waterfront Area, City",
+    "property_title": "Exclusive Waterfront Penthouse with Private Terrace",
+    "property_category": "Luxury",
+    "price_range": [2000000, 2500000],
+    "verification_status": "Verified",
+    "property_area": "3,000 sq. ft.",
+    "order_count": 0,
+    "description": "Indulge in the epitome of luxury with this exclusive waterfront penthouse. This 4-bedroom, 4.5-bathroom residence offers unparalleled views of the water and cityscape. The expansive terrace provides a private oasis to relax and entertain. With state-of-the-art amenities and top-of-the-line finishes, this penthouse sets a new standard for luxury living.",
+    "agent_name": "Jane Smith",
+    "agent_image": "https://i.ibb.co/JBSLy9h/st1.jpg"
+  },
+  {
+    "property_image": "https://i.ibb.co/znDsPx0/luxury3.jpg",
+    "property_location": "789 Suburban Lane,City",
+    "property_title": "Modern Suburban Retreat with Spacious Yard",
+    "property_category": "Luxury",
+    "price_range": [800000 ,  1000000],
+    "verification_status": "Verified",
+    "property_area": "1,800 sq. ft.",
+    "order_count": 0,
+    "description": "Escape to this modern suburban retreat offering the perfect blend of sophistication and comfort. This 2-bedroom, 2-bathroom condo features a spacious interior, high ceilings, and a private outdoor space. The property is situated in an upscale suburb, providing tranquility while being conveniently close to city amenities.",
+    "agent_name": "Michael Johnson",
+    "agent_image": "https://i.ibb.co/JtqVPF2/st2.jpg"
+  }
+]
+  
