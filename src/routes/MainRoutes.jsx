@@ -6,6 +6,9 @@ import Register from "../pages/Register/Register";
 import MainLayout from './../layouts/MainLayout';
 import AllProperties from "../pages/AllProperties/AllProperties";
 import PropertiesDetails from "../pages/AllProperties/PropertiesDetails";
+import OfferNow from './../components/OfferNow/OfferNow';
+import BoughtProperties from "../components/BoughtProperties/BoughtProperties";
+import AllUsers from "../components/AllUsers/AllUsers";
 
 
 const MainRoutes = createBrowserRouter([
@@ -27,6 +30,19 @@ const MainRoutes = createBrowserRouter([
                 element: <PropertiesDetails></PropertiesDetails>,
                 loader: ({params})=>fetch(`http://localhost:5000/properties/${params.id}`)
             },
+            {
+                path: 'offerNow/:id',
+                element: <OfferNow></OfferNow>,
+                loader: ({params})=>fetch(`http://localhost:5000/properties/${params.id}`)
+            },
+            {
+                path:'/offers',
+                element: <BoughtProperties></BoughtProperties>
+            },
+            {
+                path:'users',
+                element: <AllUsers></AllUsers>
+            }
                   
             
         ]

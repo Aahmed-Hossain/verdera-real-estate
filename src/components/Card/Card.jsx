@@ -35,7 +35,6 @@ const Card = ({ item }) => {
         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
           {property_title}
         </h1>
-
         <div className="flex items-center gap-x-2 mt-2">
           <img
             className="object-cover w-16 h-16 rounded-full"

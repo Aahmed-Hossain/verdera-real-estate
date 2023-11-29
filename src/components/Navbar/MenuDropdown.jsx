@@ -53,11 +53,10 @@ const MenuDropdown = () => {
           <div className="flex flex-col cursor-pointer">
             <Link
               to="/"
-              className="block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
+              className="block px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
             >
               Home
             </Link>
-
             <Link
               to="/login"
               className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600 "
@@ -70,7 +69,19 @@ const MenuDropdown = () => {
             >
               Sign Up
             </Link>
-            <button onClick={handleLogout}  className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600">Logout</button>
+            <Link
+              to="/offers"
+              className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
+            >
+              Bought Property
+            </Link>
+            <Link
+              to="/users"
+              className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
+            >
+              All Users
+            </Link>
+            <Link onClick={handleLogout}  className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600">Logout</Link>
           </div>
         </div>
       )}

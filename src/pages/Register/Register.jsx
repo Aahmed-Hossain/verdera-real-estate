@@ -9,33 +9,30 @@ import Lottie from "lottie-react";
 import lottie from '../../assets/images/lottie/login.json'
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { TbFidgetSpinner } from "react-icons/tb";
+import { axiosPublic } from "../../hooks/useAxiosPublic";
 
 const Register = () => {
   const navigate = useNavigate();
   const { createUser, handleUpdateProfile, loading} = useAuth();
-  const {
-    register,
-    handleSubmit,
-    // reset,
-    formState: { errors },
+  const { register,handleSubmit,reset, formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     // console.log(data);
     createUser(data.email, data.password, data.img).then((result) => {
       console.log(result.user);
       handleUpdateProfile(data.name, data.img).then(() => {
-        Swal.fire("WoW", "You Logged In successfully", "success");
+        // Swal.fire("WoW", "You Logged In successfully", "success");
         navigate("/");
       })
-        //   const userInfo = { user: data.name, email: data.email };
-        //   publicAxios.post("/users", userInfo).then((res) => {
-        //     console.log(res.data);
-        //     if (res.data.insertedId) {
-        //       reset();
-        //       Swal.fire("WoW", "You Logged In successfully", "success");
-        //       navigate("/");
-        //     }
-        //   });
+          const userInfo = { name: data.name, email: data.email, signUpTime: new Date() };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            console.log(res.data);
+            if (res.data.insertedId) {
+              reset();
+              Swal.fire("WoW", "User Created successfully", "success");
+              navigate("/");
+            }
+          });
         })
         .catch((err) => {
           console.log(err);
