@@ -8,9 +8,11 @@ import SocialLogin from "../../components/shared/SocialLogin";
 import Lottie from "lottie-react";
 import lottie from '../../assets/images/lottie/login.json'
 import PageTitle from "../../components/PageTitle/PageTitle";
+import { TbFidgetSpinner } from "react-icons/tb";
+
 const Register = () => {
   const navigate = useNavigate();
-  const { createUser, handleUpdateProfile} = useAuth();
+  const { createUser, handleUpdateProfile, loading} = useAuth();
   const {
     register,
     handleSubmit,
@@ -21,10 +23,10 @@ const Register = () => {
     // console.log(data);
     createUser(data.email, data.password, data.img).then((result) => {
       console.log(result.user);
-      handleUpdateProfile(data.name, data.img)
-        .then(() => {
-            Swal.fire("WoW", "You Logged In successfully", "success");
-              navigate("/");
+      handleUpdateProfile(data.name, data.img).then(() => {
+        Swal.fire("WoW", "You Logged In successfully", "success");
+        navigate("/");
+      })
         //   const userInfo = { user: data.name, email: data.email };
         //   publicAxios.post("/users", userInfo).then((res) => {
         //     console.log(res.data);
@@ -35,10 +37,10 @@ const Register = () => {
         //     }
         //   });
         })
-        .then((err) => {console.log(err)
-            Swal.fire("Opps", `${err}`, "error")
+        .catch((err) => {
+          console.log(err);
+          Swal.fire("Opps", `${err}`, "error");
         });
-    });
   };
   return (
     <div className="hero min-h-screen">
@@ -48,7 +50,7 @@ const Register = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm border border-[#39bb4c] rounded-none">
           <div className="card-body">
-            <h1 className="text-3xl text-center font-bold text-[#39bb4c]">
+            <h1 className={`text-3xl text-center font-bold text-[#39bb4c] ${loading ? 'animate-spin': ''}`}>
               Sign Up Now
             </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -145,7 +147,7 @@ const Register = () => {
                 className="hover:bg-[#3ec953] bg-[#39bb4c] font-semibold py-2 px-4 w-full text-white"
                 type="submit"
               >
-                Register
+                {loading ? <TbFidgetSpinner className="animate-spin mx-auto" />:'Sign Up'}
               </button>
             </form>
             <p className="divider">OR</p>

@@ -5,10 +5,10 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 import { MdOutlineVerifiedUser } from "react-icons/md";
 
 import Button from "../shared/Button/Button";
+import { Link } from "react-router-dom";
 const Card = ({ item }) => {
-  // const {user} = useAuth();
-  // console.log(user);
   const {
+    _id,
     property_image,
     agent_image,
     property_area,
@@ -27,7 +27,9 @@ const Card = ({ item }) => {
         alt="avatar"
       />
       <div className="flex items-center justify-center px-6 py-3 bg-gray- bg-[#61d473]">
-        <Button value={"Details"}></Button>
+        <Link to={`/allProperties/propertiesDetails/${_id}`}>
+          <Button value={"Details"}></Button>
+        </Link>
       </div>
       <div className="px-6 py-4">
         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
@@ -54,17 +56,18 @@ const Card = ({ item }) => {
           <BiArea /> Area: {property_area}
         </div>
         <div className="flex items-center font-semibold text-md text-gray-700 dark:text-gray-200 gap-1">
-        <MdOutlineVerifiedUser /> Status: <span className="text-blue-500 text-xl"> {verification_status}</span>
+          <MdOutlineVerifiedUser /> Status:{" "}
+          <span className="text-blue-500 text-xl"> {verification_status}</span>
         </div>
         <div className="flex gap-1 items-center font-semibold text-md ">
-        <h1>
-              <AiOutlineDollarCircle />
-            </h1>
+          <h1>
+            <AiOutlineDollarCircle />
+          </h1>
           <p className=" text-gray-700 dark:text-gray-400">
             Price Range: $ {price_range[0] + "-" + price_range[1]}
           </p>
         </div>
-        
+
         <div className="flex items-center mt-1 text-gray-700 dark:text-gray-200 gap-1 -ml-1">
           <h1 className="font-bold text-xl">
             <MdOutlineLocationOn />
