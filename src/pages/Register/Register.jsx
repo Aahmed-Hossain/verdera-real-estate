@@ -1,6 +1,6 @@
 
 import githubImg from "../../assets/images/logo/github.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -12,17 +12,16 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { axiosPublic } from "../../hooks/useAxiosPublic";
 
 const Register = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { createUser, handleUpdateProfile, loading} = useAuth();
   const { register,handleSubmit,reset, formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    // console.log(data);
     createUser(data.email, data.password, data.img).then((result) => {
       console.log(result.user);
       handleUpdateProfile(data.name, data.img).then(() => {
-        // Swal.fire("WoW", "You Logged In successfully", "success");
-        navigate("/");
+    navigate(location?.state ? location.state : "/");
       })
           const userInfo = { name: data.name, email: data.email, signUpTime: new Date() };
           axiosPublic.post("/users", userInfo).then((res) => {
@@ -30,9 +29,11 @@ const Register = () => {
             if (res.data.insertedId) {
               reset();
               Swal.fire("WoW", "User Created successfully", "success");
-              navigate("/");
+              navigate(location?.state ? location.state : "/");
             }
+           
           });
+          
         })
         .catch((err) => {
           console.log(err);

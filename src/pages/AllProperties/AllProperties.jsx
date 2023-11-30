@@ -1,13 +1,17 @@
 
 import Card from "../../components/Card/Card";
+import Loading from "../../components/shared/Loading/Loading";
 import useProperties from "../../hooks/useProperties";
 
 const AllProperties = () => {
-  const [properties] = useProperties();
+  const [properties,isLoading] = useProperties();
+  if(isLoading){
+    return <Loading></Loading>
+  }
   return (
     <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6 pt-[6rem]">
     {
-      properties?.map((item)=> <Card key={item._id} item={item} 
+      properties?.map((item)=> <Card key={item._id} item={item}  isLoading={isLoading}
       ></Card>)
     }
     </div>

@@ -9,8 +9,7 @@ import PropertiesDetails from "../pages/AllProperties/PropertiesDetails";
 import OfferNow from './../components/OfferNow/OfferNow';
 import BoughtProperties from "../components/BoughtProperties/BoughtProperties";
 import AllUsers from "../components/AllUsers/AllUsers";
-
-
+import PrivateRoute from "./PrivateRoute";
 const MainRoutes = createBrowserRouter([
     {
         path: '/',
@@ -27,7 +26,7 @@ const MainRoutes = createBrowserRouter([
             },
             {
                 path: 'allProperties/propertiesDetails/:id',
-                element: <PropertiesDetails></PropertiesDetails>,
+                element: <PrivateRoute><PropertiesDetails></PropertiesDetails></PrivateRoute>,
                 loader: ({params})=>fetch(`http://localhost:5000/properties/${params.id}`)
             },
             {

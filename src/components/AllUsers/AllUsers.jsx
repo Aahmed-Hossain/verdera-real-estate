@@ -3,12 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import { FaTrash, FaUser } from "react-icons/fa6";
 import { axiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../shared/Loading/Loading";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
 
-  const { data: users = [], isLoading,
-    //  refetch
- } = useQuery({
+  const { data: users = [], isLoading,refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosPublic.get("/users",
@@ -46,30 +45,32 @@ const AllUsers = () => {
 //       }
 //     });
 //   };
-//   const handleDelete = (id) => {
-//     Swal.fire({
-//       title: "Are you sure?",
-//       text: "You won't be able to revert this!",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: "#3085d6",
-//       cancelButtonColor: "#d33",
-//       confirmButtonText: "Yes, delete it!",
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         axiosHook.delete(`/users/${id} `).then((res) => {
-//           if (res.data.deletedCount) {
-//             Swal.fire({
-//               title: "Deleted!",
-//               text: "Your file has been deleted.",
-//               icon: "success",
-//             });
-//             refetch();
-//           }
-//         });
-//       }
-//     });
-//   };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic.delete(`/users/${id}`).then((res) => {
+          if (res.data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "User has been deleted.",
+              icon: "success",
+            });
+            refetch();
+          }
+        });
+      }
+    });
+  };
+
 if(isLoading){
     return <Loading></Loading>
 }
@@ -109,7 +110,7 @@ if(isLoading){
               </div>
               <div>
                 <button
-                //   onClick={() => handleDelete(item._id)}
+                  onClick={() => handleDelete(item._id)}
                   className="btn btn-md opacity-50 p-3  hover:opacity-70 bg-black"
                 >
                   <FaTrash className="text-orange-700 font-bold text-xl"></FaTrash>

@@ -6,7 +6,8 @@ import { MdOutlineVerifiedUser } from "react-icons/md";
 
 import Button from "../shared/Button/Button";
 import { Link } from "react-router-dom";
-const Card = ({ item }) => {
+import Loading from "../shared/Loading/Loading";
+const Card = ({ item,isLoading }) => {
   const {
     _id,
     property_image,
@@ -19,6 +20,9 @@ const Card = ({ item }) => {
     agent_email,
     agent_name,
   } = item;
+  if(isLoading){
+    return <Loading></Loading>
+  }
   return (
     <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 group">
       <img

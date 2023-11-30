@@ -1,10 +1,12 @@
 import Swal from "sweetalert2";
 import googleImg from "../../assets/images/logo/google.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { axiosPublic } from "../../hooks/useAxiosPublic";
 const SocialLogin = () => {
+  // const from = location?.state?.from?.pathname || '/';
   const navigate = useNavigate();
+  const location = useLocation();
   const { googleLogin } = useAuth();
   const handleGoogleLogin = () => {
     googleLogin().then((res) => {
@@ -16,7 +18,7 @@ const SocialLogin = () => {
       };
       axiosPublic.post("/users", userInfo).then((res) => console.log(res));
       Swal.fire("WoW", "user Logged in", "success");
-      navigate("/");
+      navigate(location?.state ? location.state : "/");
     });
   };
   return (

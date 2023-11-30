@@ -14,9 +14,8 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 
 const Login = () => {
   const [disable, setDisable] = useState(false);
-  const location = useLocation()
+  const location = useLocation();
   const navigate = useNavigate();
-  const from = location?.state?.from?.pathname || '/';
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -30,9 +29,8 @@ const Login = () => {
       console.log(res);
       Swal.fire("Great", "User Created Successfully", "success");
       form.reset();
-    navigate(from,{replace: true})
+    navigate(location?.state ? location.state : "/");
     });
-    
   };
   const handleValidateCaptcha = (e) => {
     const user_captcha_value = e.target.value;
