@@ -1,22 +1,16 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { FaTrash, FaUser } from "react-icons/fa6";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../shared/Loading/Loading";
 import Swal from "sweetalert2";
+import { axiosSecure } from "../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
 
   const { data: users = [], isLoading,refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/users",
-      // {
-      //   headers: {
-      //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      //   },
-      // }
-      );
+      const res = await axiosSecure.get("/users");
       return res.data;
     },
   });
@@ -57,7 +51,7 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/users/${id}`).then((res) => {
+        axiosSecure.delete(`/users/${id}`).then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({
               title: "Deleted!",

@@ -1,8 +1,8 @@
 import { useLoaderData, useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
 import useAuth from '../../hooks/useAuth';
 import PageTitle from "../PageTitle/PageTitle";
+import { axiosSecure } from "../../hooks/useAxiosSecure";
 const OfferNow = () => {
   const property = useLoaderData();
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const OfferNow = () => {
       date,
       price,
       property_image,
-      status:'pending',
+      status:'Pending',
       property_area,
     agent_name,
     agent_email,
@@ -45,15 +45,11 @@ const OfferNow = () => {
     agent_image,
     property_title
     };
-      axiosPublic.post(`http://localhost:5000/offers`, offer
-    //   , {
-    //     withCredentials: true,
-    //   }
-      )
+      axiosSecure.post(`/offers`, offer)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-          Swal.fire("Great!", "Your order placed successfully!", "success");
+          Swal.fire("Great!", "Your Offer placed successfully!", "success");
         }
         form.reset();
         navigate("/offers");

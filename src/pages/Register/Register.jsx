@@ -9,7 +9,7 @@ import Lottie from "lottie-react";
 import lottie from '../../assets/images/lottie/login.json'
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { TbFidgetSpinner } from "react-icons/tb";
-import { axiosPublic } from "../../hooks/useAxiosPublic";
+import { axiosSecure } from "../../hooks/useAxiosSecure";
 
 const Register = () => {
   const location = useLocation();
@@ -24,7 +24,7 @@ const Register = () => {
     navigate(location?.state ? location.state : "/");
       })
           const userInfo = { name: data.name, email: data.email, signUpTime: new Date() };
-          axiosPublic.post("/users", userInfo).then((res) => {
+          axiosSecure.post("/users", userInfo).then((res) => {
             console.log(res.data);
             if (res.data.insertedId) {
               reset();

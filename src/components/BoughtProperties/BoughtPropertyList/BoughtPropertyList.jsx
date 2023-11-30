@@ -1,7 +1,7 @@
 
 import Loading from "../../shared/Loading/Loading";
 import Swal from "sweetalert2";
-import { axiosPublic } from "../../../hooks/useAxiosPublic";
+import { axiosSecure } from "../../../hooks/useAxiosSecure";
 
 /* eslint-disable react/prop-types */
 const BoughtPropertyList = ({ item, isLoading, refetch }) => {
@@ -31,7 +31,7 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed)
-      axiosPublic.delete(`http://localhost:5000/offers/${id}`)
+      axiosSecure.delete(`/offers/${id}`)
     .then(res=> {
         console.log('cofirm delete', res.data);
         Swal.fire("Yes", "Deleted Successfully", "success")
