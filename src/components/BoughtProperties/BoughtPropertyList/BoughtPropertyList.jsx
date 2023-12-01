@@ -2,12 +2,11 @@
 import Loading from "../../shared/Loading/Loading";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
-import useAddedProperties from "../../../hooks/useAddedProperties";
 
 /* eslint-disable react/prop-types */
 const BoughtPropertyList = ({ item, isLoading, refetch }) => {
-  const [addedProperties]= useAddedProperties();
-  console.log('addedp', addedProperties);
+  // const [addedProperties]= useAddedProperties();
+  // console.log('addedp', addedProperties);
   // console.log(item);
   if (isLoading) {
     return <Loading></Loading>

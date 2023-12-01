@@ -14,6 +14,8 @@ const SocialLogin = () => {
       const userInfo = {
         email: res.user?.email,
         name: res.user?.displayName,
+        role: 'Admin',
+        status: 'Verified',
         signUpTime: new Date(),
       };
       axiosPublic.post("/users", userInfo).then((res) => console.log(res));

@@ -7,13 +7,13 @@ import ToggleBtn from '../../shared/Button/ToggleBtn';
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
-import { BsFillHouseAddFill, BsGraphUp } from 'react-icons/bs'
-import { MdOutlineHomeWork } from "react-icons/md";
-
-
+import useAuth from '../../../hooks/useAuth';
+import useAllUsers from '../../../hooks/useAllUsers';
+import AgentMenu from '../../AgentMenu/AgnetMenu';
 
 
 const Sidebar = () => {
+  const {logOut} = useAuth();
   const [toggle, setToggle] = useState(false)
   const [isActive, setActive] = useState(false)
 
@@ -25,6 +25,8 @@ const Sidebar = () => {
   const handleToggle = () => {
     setActive(!isActive)
   }
+  const [users] = useAllUsers()
+  console.log(users[0]);
   return (
     <>
       {/* Small Screen Navbar */}
@@ -60,22 +62,7 @@ const Sidebar = () => {
             {/* If a user is host */}
             <ToggleBtn toggleHandler={toggleHandler} />
             <nav>
-              <MenuList
-                icon={BsGraphUp}
-                label='Statistics'
-                address='/dashboard'
-              />
-              <MenuList
-                icon={BsFillHouseAddFill}
-                label='Add Property'
-                address='addProperty'
-              />
-              <MenuList
-                icon={MdOutlineHomeWork}
-                label='My Listings'
-                address='myListings'
-              />
-
+              <AgentMenu></AgentMenu>
               {/* Menu Items */}
             </nav>
           </div>
@@ -89,9 +76,11 @@ const Sidebar = () => {
             label='Profile'
             address='/dashboard/profile'
           />
-          <button className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'>
+          <button onClick={logOut}  className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'>
             <GrLogout className='w-5 h-5' />
+            
             <span className='mx-4 font-medium'>Logout</span>
+           
           </button>
         </div>
       </div>

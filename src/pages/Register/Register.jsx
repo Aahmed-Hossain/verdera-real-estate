@@ -10,6 +10,7 @@ import lottie from '../../assets/images/lottie/login.json'
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { axiosSecure } from "../../hooks/useAxiosSecure";
+import { axiosPublic } from "../../hooks/useAxiosPublic";
 
 const Register = () => {
   const location = useLocation();
@@ -23,8 +24,12 @@ const Register = () => {
       handleUpdateProfile(data.name, data.img).then(() => {
     navigate(location?.state ? location.state : "/");
       })
-          const userInfo = { name: data.name, email: data.email, signUpTime: new Date() };
-          axiosSecure.post("/users", userInfo).then((res) => {
+          const userInfo = { name: data.name, 
+            email: data.email, 
+            signUpTime: new Date() ,  
+            role: 'Agent',
+            status:'Verified' };
+          axiosPublic.post("/users", userInfo).then((res) => {
             console.log(res.data);
             if (res.data.insertedId) {
               reset();
