@@ -51,13 +51,22 @@ const MenuDropdown = () => {
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
+            
+           {
+            user ? 
+            <>
             <Link
-              to="/"
-              className="block px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
+              to="/dashboard"
+              className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
             >
-              Home
+              Dashboard
             </Link>
-            <Link
+            <Link onClick={handleLogout}  className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600">Logout</Link>
+            </> 
+            : 
+      
+            <>
+             <Link
               to="/login"
               className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600 "
             >
@@ -69,19 +78,21 @@ const MenuDropdown = () => {
             >
               Sign Up
             </Link>
-            <Link
+            </>
+           }
+            {/* <Link
               to="/offers"
               className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
             >
               Bought Property
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               to="/users"
               className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
             >
               All Users
             </Link>
-            <Link onClick={handleLogout}  className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600">Logout</Link>
+            <Link onClick={handleLogout}  className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600">Logout</Link> */}
           </div>
         </div>
       )}

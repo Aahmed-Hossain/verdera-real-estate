@@ -2,10 +2,16 @@
 import Loading from "../../shared/Loading/Loading";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import useAddedProperties from "../../../hooks/useAddedProperties";
 
 /* eslint-disable react/prop-types */
 const BoughtPropertyList = ({ item, isLoading, refetch }) => {
-  console.log(item);
+  const [addedProperties]= useAddedProperties();
+  console.log('addedp', addedProperties);
+  // console.log(item);
+  if (isLoading) {
+    return <Loading></Loading>
+  }
   const {
     _id,
     agent_email,
@@ -34,15 +40,15 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
       axiosSecure.delete(`/offers/${id}`)
     .then(res=> {
         console.log('cofirm delete', res.data);
-        Swal.fire("Yes", "Deleted Successfully", "success")
         refetch();
+        Swal.fire("Yes", "Deleted Successfully", "success")
     })
     });
   };
 
   if (isLoading) {
-      return <Loading></Loading>
-    }
+    return <Loading></Loading>
+  }
   return (
     <div className=" ">
       <div className="flex items-center justify-between gap-2  py-2 border border-slate-200 rounded-xl mb-4">

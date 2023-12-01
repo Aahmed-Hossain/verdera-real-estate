@@ -39,7 +39,7 @@ const Card = ({ item,isLoading }) => {
         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
           {property_title}
         </h1>
-        <div className="flex items-center gap-x-2 mt-2">
+        {/* <div className="flex items-center gap-x-2 mt-2">
           <img
             className="object-cover w-16 h-16 rounded-full"
             src={agent_image}
@@ -54,9 +54,28 @@ const Card = ({ item,isLoading }) => {
               {agent_email}
             </p>
           </div>
-        </div>
+        </div> */}
+        <div className="flex items-center gap-x-2 my-3 ">
+            <img
+              className="object-cover w-16 h-16 rounded-full"
+              src={agent_image}
+              alt=""
+            />
+
+            <div>
+              <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                {agent_name}
+              </h1>
+              <p className="text-base text-gray-500 dark:text-gray-400">
+                {agent_email}
+              </p>
+            </div>
+            <div className="border-l-2 border-green-500 ml-3 text-xl">
+              <h2 className="text-[#33333380] mx-2">Agent</h2>
+            </div>
+          </div>
         <div className="flex items-center mt-2 font-semibold text-md text-gray-700 dark:text-gray-200 gap-1">
-          <BiArea /> Area: {property_area}
+          <BiArea /> Area: {property_area} sq. ft.
         </div>
         <div className="flex items-center font-semibold text-md text-gray-700 dark:text-gray-200 gap-1">
           <MdOutlineVerifiedUser /> Status:{" "}

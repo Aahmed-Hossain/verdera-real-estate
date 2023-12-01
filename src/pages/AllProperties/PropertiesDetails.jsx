@@ -4,9 +4,9 @@ import { MdOutlineLocationOn } from "react-icons/md";
 
 const PropertiesDetails = () => {
   const propertyDetails = useLoaderData();
-  console.log(propertyDetails);
+  // console.log(propertyDetails);
   return (
-    <div className="mb-8 pt-[6rem]">
+    <div className="mb-8 pt-[5rem]">
       <PageTitle title={"Verdera | Property Details"}></PageTitle>
       <h2 className="font-extrabold text-center uppercase text-[#61d473] my-4 text-4xl">
         {propertyDetails.property_category}
@@ -66,7 +66,7 @@ const PropertiesDetails = () => {
           <h4 className="text-md font-semibold">
             Property Area:
             <span className="text-green-500 font-bold text-xl">
-              {propertyDetails.property_area}
+              {propertyDetails.property_area} Sq. ft.
             </span>
           </h4>
           <h5 className="text-md font-semibold">

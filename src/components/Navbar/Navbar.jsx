@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div className='fixed w-11/12 py-2 bg-white z-10 shadow-sm'>
       <div className=''>
-          <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
+          <div className='flex flex-row  items-center justify-between gap-3 md:gap-'>
             {/* Logo */}
             <Link to='/'>
               <img
@@ -17,7 +17,7 @@ const Navbar = () => {
               />
             </Link>
             {/* middle links */}
-            <div className='font-bold'>
+            <div className='font-bold '>
             <MiddleNavLinks></MiddleNavLinks>
             </div>
             {/* Dropdown Menu */}
