@@ -14,31 +14,6 @@ const AllUsers = () => {
       return res.data;
     },
   });
-//   const handleMakeAdmin = (id) => {
-//     Swal.fire({
-//       title: "Do you wa?",
-//       text: "You won't be able to revert this!",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: "#3085d6",
-//       cancelButtonColor: "#d33",
-//       confirmButtonText: "Yes, delete it!",
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         axiosHook.patch(`/users/admin/${id}`).then((res) => {
-//           console.log(res.data);
-//           if (res.data.modifiedCount > 0) {
-//             Swal.fire({
-//               title: "Done!",
-//               text: `${users.name} has been admin.`,
-//               icon: "success",
-//             });
-//             refetch();
-//           }
-//         });
-//       }
-//     });
-//   };
 
   const handleDelete = (id) => {
     Swal.fire({

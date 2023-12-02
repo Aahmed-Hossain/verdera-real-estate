@@ -3,19 +3,22 @@ import { axiosSecure } from "../../../../hooks/useAxiosSecure";
 import Loading from "../../../../components/shared/Loading/Loading";
 import WishListRow from "./WishListRow";
 import PageTitle from "../../../../components/PageTitle/PageTitle";
+import useAuth from "../../../../hooks/useAuth";
 
 const MyWishList = () => {
+  const {user } = useAuth();
+  const email = user.email;
     const {data:wishList=[], isLoading, refetch} = useQuery({
         queryKey: ['wishList'],
         queryFn: async()=> {
-            const res = await axiosSecure.get(`/wishList`);
+            const res = await axiosSecure.get(`/wishList/${email}`);
             return res.data;
         }
     });
     if(isLoading){
         return <Loading></Loading>
     }
-    console.log(wishList);
+    // console.log(wishList);
     return (
         <>
         <PageTitle title={'Dashboard | WishList'}></PageTitle>
@@ -79,7 +82,8 @@ const MyWishList = () => {
                       </tr>
                     </thead>
                     <tbody>{/* wish list row data */
-                    wishList.map(item=> <WishListRow key={wishList._id}
+                    wishList.map(item=> <WishListRow 
+                      key={item._id}
                       item={item}
                       isLoading={isLoading}
                       refetch={refetch}

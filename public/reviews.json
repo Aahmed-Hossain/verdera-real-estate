@@ -1,0 +1,26 @@
+[
+  {
+    "name": "John Doe",
+    "image": "https://i.ibb.co/JyNSs9g/staff5.jpg",
+    "description": "Welcome to Verdera Real Estate, where your dream home becomes a reality. ",
+    "agent_name": "Agent Smith",
+    "property_title": "Luxury Villa",
+    "review_time": "2023-01-01T10:30:00Z"
+  },
+  {
+    "name": "Jane Joy",
+    "image": "https://i.ibb.co/P57ZCG3/staff2.jpg",
+    "description": "At Verdera, we understand that finding the perfect property is not just about location; it's about creating a space that truly reflects your lifestyle and aspirations.",
+    "agent_name": "Agent Johnson",
+    "property_title": "Urban Loft",
+    "review_time": "2023-02-15T15:45:00Z"
+  },
+  {
+    "name": "Bob Smith",
+    "image": "https://i.ibb.co/fHxp9wx/staff1.jpg",
+    "description": "With a team of dedicated professionals, Verdera is committed to providing unparalleled service in the real estate industry.",
+    "agent_name": "Agent Brown",
+    "property_title": "Green Residences",
+    "review_time": "2023-03-20T08:00:00Z"
+  }
+]

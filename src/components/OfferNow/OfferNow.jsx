@@ -6,7 +6,7 @@ import { axiosSecure } from "../../hooks/useAxiosSecure";
 const OfferNow = () => {
   const property = useLoaderData();
   const navigate = useNavigate();
-  // console.log('single property',property);
+  console.log('single property',property);
   const {
     property_image,
     property_title,
@@ -142,12 +142,12 @@ const OfferNow = () => {
                   //   price_range[1]}`}
                   // defaultValue={`${price_range[0]}`}
                   
-                  placeholder={`${price_range[0]} ${'-'} ${price_range[1]}`}
+                  placeholder={`${price_range?.[0]} ${'-'} ${price_range?.[1]}`}
 
                   className="input border border-green-500 focus:outline-none focus:border-2 focus:border-green-500 w-full"
                   name="price"
-                  min={`${price_range[0]}`}
-                  max={`${price_range[1]}`}
+                  min={`${price_range?.[0]}`}
+                  max={`${price_range?.[1]}`}
                   type="number"
                   required
                 />

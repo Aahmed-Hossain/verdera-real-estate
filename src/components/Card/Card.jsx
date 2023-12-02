@@ -30,7 +30,7 @@ const Card = ({ item,isLoading }) => {
         src={property_image}
         alt="avatar"
       />
-      <div className="flex items-center justify-center px-6 py-3 bg-gray- bg-[#61d473]">
+      <div className="flex items-center justify-center px-6 py-3 bg-gray- bg-[#60d371]">
         <Link to={`/allProperties/propertiesDetails/${_id}`}>
           <Button value={"Details"}></Button>
         </Link>
@@ -39,22 +39,6 @@ const Card = ({ item,isLoading }) => {
         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
           {property_title}
         </h1>
-        {/* <div className="flex items-center gap-x-2 mt-2">
-          <img
-            className="object-cover w-16 h-16 rounded-full"
-            src={agent_image}
-            alt=""
-          />
-
-          <div>
-            <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-              {agent_name}
-            </h1>
-            <p className="text-base text-gray-500 dark:text-gray-400">
-              {agent_email}
-            </p>
-          </div>
-        </div> */}
         <div className="flex items-center gap-x-2 my-3 ">
             <img
               className="object-cover w-16 h-16 rounded-full"
