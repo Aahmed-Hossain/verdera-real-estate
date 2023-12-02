@@ -16,7 +16,9 @@ import MyListings from "../pages/DashBoard/Agent/MyListings";
 import AgentRoute from "./AgentRoute";
 import ManageProperty from "../pages/DashBoard/Admin/ManageProperty/ManageProperty";
 import AdminRoute from './AdminRoute';
+import UserRoute from './UserRoute'
 import ManageUser from "../pages/DashBoard/Admin/ManageUser/ManageUser";
+import MyWishList from "../pages/DashBoard/User/MyWishList/MyWishList";
 const MainRoutes = createBrowserRouter([
   {
     path: "/",
@@ -69,6 +71,11 @@ const MainRoutes = createBrowserRouter([
     path: "/dashboard",
     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
+      {
+        path: 'myWishList',
+        element: <PrivateRoute><UserRoute><MyWishList></MyWishList></UserRoute></PrivateRoute>
+
+      },
       {
         path:'addProperty',
         element: <PrivateRoute><AgentRoute><AddProperty></AddProperty></AgentRoute></PrivateRoute>

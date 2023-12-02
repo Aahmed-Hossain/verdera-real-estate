@@ -16,6 +16,7 @@ import AdminMenu from './AdminMenu/AdminMenu';
 
 const Sidebar = () => {
   const [userRole] = useRole()
+  console.log(userRole);
   const {logOut} = useAuth();
   const [toggle, setToggle] = useState(false)
   const [isActive, setActive] = useState(false)
@@ -65,15 +66,11 @@ const Sidebar = () => {
             {/* If a user is host */}
            {userRole.role === 'Agent' &&  <ToggleBtn toggleHandler={toggleHandler} />}
             <nav>
-              
-
               {/* Menu Items */}
 
-              {/* TODO:  to functional can be a agent as well as user also */}
-               { userRole.role === 'Agent' ? toggle ? <AgentMenu></AgentMenu> : <UserMenu></UserMenu> : ''}
-              {/* { userRole.role === 'Agent'  && <AgentMenu></AgentMenu> } */}
-              { userRole.role === 'User'  && <UserMenu></UserMenu> }
-              { userRole.role === 'Admin'  && <AdminMenu></AdminMenu> }
+              { userRole?.role === 'User'  && <UserMenu></UserMenu> }
+               { userRole?.role === 'Agent' ? toggle ? <UserMenu></UserMenu>  : <AgentMenu></AgentMenu> : ''}
+              { userRole?.role === 'Admin'  && <AdminMenu></AdminMenu> }
             </nav>
           </div>
         </div>

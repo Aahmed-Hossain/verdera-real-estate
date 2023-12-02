@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const PropertyRow = ({ addedProperty, refetch }) => {
+const PropertyRow = ({ addedProperty }) => {
   // if(isLoading){
   //   return <Loading></Loading>
   // }

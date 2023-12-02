@@ -6,7 +6,7 @@ import Loading from './../../../components/shared/Loading/Loading';
 
 const MyListings = () => {
    const [addedProperties, isLoading, refetch]= useAddedProperties();
-  console.log('addedProperties', addedProperties);
+  // console.log('addedProperties', addedProperties);
   if(isLoading){
     return <Loading></Loading>
   }
