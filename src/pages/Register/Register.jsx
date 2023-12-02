@@ -9,7 +9,6 @@ import Lottie from "lottie-react";
 import lottie from '../../assets/images/lottie/login.json'
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { TbFidgetSpinner } from "react-icons/tb";
-import { axiosSecure } from "../../hooks/useAxiosSecure";
 import { axiosPublic } from "../../hooks/useAxiosPublic";
 
 const Register = () => {
@@ -27,7 +26,7 @@ const Register = () => {
           const userInfo = { name: data.name, 
             email: data.email, 
             signUpTime: new Date() ,  
-            role: 'Agent',
+            role: 'User',
             status:'Verified' };
           axiosPublic.post("/users", userInfo).then((res) => {
             console.log(res.data);

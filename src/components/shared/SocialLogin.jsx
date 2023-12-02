@@ -14,7 +14,7 @@ const SocialLogin = () => {
       const userInfo = {
         email: res.user?.email,
         name: res.user?.displayName,
-        role: 'Admin',
+        role: 'User',
         status: 'Verified',
         signUpTime: new Date(),
       };

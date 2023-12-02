@@ -8,11 +8,14 @@ import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
 import useAuth from '../../../hooks/useAuth';
-import useAllUsers from '../../../hooks/useAllUsers';
 import AgentMenu from '../../AgentMenu/AgnetMenu';
+import useRole from '../../../hooks/useRole';
+import UserMenu from './UserMenu/UserMenu';
+import AdminMenu from './AdminMenu/AdminMenu';
 
 
 const Sidebar = () => {
+  const [userRole] = useRole()
   const {logOut} = useAuth();
   const [toggle, setToggle] = useState(false)
   const [isActive, setActive] = useState(false)
@@ -25,8 +28,8 @@ const Sidebar = () => {
   const handleToggle = () => {
     setActive(!isActive)
   }
-  const [users] = useAllUsers()
-  console.log(users[0]);
+  
+  // console.log(userRole.role);
   return (
     <>
       {/* Small Screen Navbar */}
@@ -60,10 +63,17 @@ const Sidebar = () => {
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
             {/* If a user is host */}
-            <ToggleBtn toggleHandler={toggleHandler} />
+           {userRole.role === 'Agent' &&  <ToggleBtn toggleHandler={toggleHandler} />}
             <nav>
-              <AgentMenu></AgentMenu>
+              
+
               {/* Menu Items */}
+
+              {/* TODO:  to functional can be a agent as well as user also */}
+               { userRole.role === 'Agent' ? toggle ? <AgentMenu></AgentMenu> : <UserMenu></UserMenu> : ''}
+              {/* { userRole.role === 'Agent'  && <AgentMenu></AgentMenu> } */}
+              { userRole.role === 'User'  && <UserMenu></UserMenu> }
+              { userRole.role === 'Admin'  && <AdminMenu></AdminMenu> }
             </nav>
           </div>
         </div>

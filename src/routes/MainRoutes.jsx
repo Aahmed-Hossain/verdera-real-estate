@@ -13,6 +13,10 @@ import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AddProperty from "../pages/DashBoard/Agent/AddProperty";
 import MyListings from "../pages/DashBoard/Agent/MyListings";
+import AgentRoute from "./AgentRoute";
+import ManageProperty from "../pages/DashBoard/Admin/ManageProperty/ManageProperty";
+import AdminRoute from './AdminRoute';
+import ManageUser from "../pages/DashBoard/Admin/ManageUser/ManageUser";
 const MainRoutes = createBrowserRouter([
   {
     path: "/",
@@ -67,11 +71,19 @@ const MainRoutes = createBrowserRouter([
     children: [
       {
         path:'addProperty',
-        element: <PrivateRoute><AddProperty></AddProperty></PrivateRoute>
+        element: <PrivateRoute><AgentRoute><AddProperty></AddProperty></AgentRoute></PrivateRoute>
       },
       {
         path: 'myListings',
-        element: <PrivateRoute><MyListings></MyListings></PrivateRoute>
+        element: <PrivateRoute><AgentRoute><MyListings></MyListings></AgentRoute></PrivateRoute>
+      },
+      {
+        path: 'manageUsers',
+        element: <PrivateRoute><AdminRoute><ManageUser></ManageUser></AdminRoute></PrivateRoute>
+      },
+      {
+        path: 'manageProperties',
+        element: <PrivateRoute><AdminRoute><ManageProperty></ManageProperty></AdminRoute></PrivateRoute>
       }
     ],
   },

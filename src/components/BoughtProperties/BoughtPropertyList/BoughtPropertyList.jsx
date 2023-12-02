@@ -2,12 +2,9 @@
 import Loading from "../../shared/Loading/Loading";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
-
 /* eslint-disable react/prop-types */
 const BoughtPropertyList = ({ item, isLoading, refetch }) => {
-  // const [addedProperties]= useAddedProperties();
-  // console.log('addedp', addedProperties);
-  // console.log(item);
+ 
   if (isLoading) {
     return <Loading></Loading>
   }
@@ -44,10 +41,6 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
     })
     });
   };
-
-  if (isLoading) {
-    return <Loading></Loading>
-  }
   return (
     <div className=" ">
       <div className="flex items-center justify-between gap-2  py-2 border border-slate-200 rounded-xl mb-4">

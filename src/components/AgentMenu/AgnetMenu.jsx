@@ -1,7 +1,7 @@
 
 import { BsFillHouseAddFill, BsGraphUp } from 'react-icons/bs'
 import { MdOutlineHomeWork } from "react-icons/md";
-import MenuList from '../MenuList';
+import MenuList from '../DashBoard/Sidebar/MenuList';
 
 const AgentMenu = () => {
     return (
