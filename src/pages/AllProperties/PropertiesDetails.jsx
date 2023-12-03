@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link, useLoaderData } from "react-router-dom";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { MdOutlineLocationOn } from "react-icons/md";
@@ -5,12 +6,18 @@ import { CiBookmarkCheck } from "react-icons/ci";
 import { axiosSecure } from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import img from '../../assets/images/logo/quote-left 1.jpg'
+import "swiper/css";
+import "swiper/css/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { MdOutlineRateReview } from "react-icons/md";
 
 const PropertiesDetails = () => {
   const { user } = useAuth();
   const email = user?.email;
   const propertyDetails = useLoaderData();
-  // console.log(propertyDetails);
   const {
     _id,
     agent_email,
@@ -42,12 +49,52 @@ const PropertiesDetails = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-          Swal.fire("Great!", `${property_title} added to to wish list successfully!` , "success");
+          Swal.fire("Great!", `${property_title} added to wish list successfully!` , "success");
         }
         //  navigate("/wishList");
       })
       .catch((error) => console.log(error));
   };
+
+
+ 
+
+
+
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/reviews/titleSpecific/${property_title}`);
+      return res.data;
+    },
+  });
+  console.log(reviews);
+
+const handleReview =()=> {
+  // dfjj
+}
+  // const handleReview = () => {
+  //   const reviewItem = {
+  //     agent_name:agent_name,
+  //     description,
+  //     agent_name,
+  //     image,
+  //     name,
+  //     property_title,
+  //     property_title,
+  //     review_time,
+  //   };
+  //   axiosSecure
+  //     .post(`/reviews/titleSpecific`, reviewItem)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       if (res.data.insertedId) {
+  //         Swal.fire("Great!", `${property_title} added to the review successfully!` , "success");
+  //       }
+  //       //  navigate("/wishList");
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
   return (
     <div className="mb-8 pt-[5rem]">
@@ -61,7 +108,7 @@ const PropertiesDetails = () => {
           <h2 className="font-extrabold text-4xl mb-2">{property_title}</h2>
           <button 
           onClick={handleWishList}
-          className="flex flex-col justify-center items-center bg-[#61d473] px-3 hover:bg-green-400 cursor-pointer rounded-md">
+          className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md">
             <p className="font-semibold">Wish List</p>{" "}
             <h3 className="text-2xl font-bold">
               <CiBookmarkCheck></CiBookmarkCheck>
@@ -129,12 +176,80 @@ const PropertiesDetails = () => {
         <div className=" flex mx-auto">
           <Link
             to={`/offerNow/${_id}`}
-            className="my-8 px-16 mx-auto py-2 da font-bold border-2 border-gray-600 bg-[#61d473] rounded-md cursor-pointer text-xl text-white dark:text-gray-200"
+            className="my-2 px-16 mx-auto py-2 da font-bold border-2 border-gray-600 bg-[#61d473] rounded-md cursor-pointer text-xl text-white dark:text-gray-200"
           >
             Offer Now
           </Link>
         </div>
       </div>
+      <div className="flex justify-end">
+          <button 
+          onClick={()=>handleReview(_id)}
+          className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md">
+            <p className="font-semibold">Leave Review</p>{" "}
+            <h3 className="text-2xl  font-bold">
+              <MdOutlineRateReview ></MdOutlineRateReview>
+            </h3>
+          </button>
+          </div>
+      {/* review section */}
+
+      <div className="">
+         
+      <Swiper navigation={true} modules={[Navigation]} className="mySwiper my-12">
+        {reviews.map((review) => (
+          <SwiperSlide key={review?._id}>
+            <div className="flex flex-col space-y-4 justify-center items-center mx-auto  w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800 border">
+              <div className="flex justify-center -mt-16 md:justify-end">
+                <img
+                  className="object-cover w-20 h-20 border-2 border-green-500 rounded-full dark:border-blue-400"
+                  alt="Testimonial avatar"
+                  src={review?.image}
+                />
+              </div>
+
+              <h2 className="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">
+               {review?.property_title}
+              </h2>
+              <div>
+                <img className="w-[7%] mx-auto mt-3" src={img} alt="" />
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">{review?.description}
+              </p>
+              <div className="flex items-center gap-x-2 my-3 ">
+            <div>
+              <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                {agent_name}
+              </h1>
+              <p className="text-base text-gray-500 dark:text-gray-400">
+                {agent_email}
+              </p>
+            </div>
+            <div className="border-l-2 border-green-500 ml-3 text-xl">
+              <h2 className="text-[#33333380] mx-2">Agent</h2>
+            </div>
+          </div>
+              </div>
+              <div className="flex justify-end mt-4">
+                <a
+                  href="#"
+                  className="text-lg font-medium text-green-600 dark:text-blue-300"
+                  tabIndex="0"
+                  role="link"
+                >
+                  {review?.name}
+                </a>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+
+
+
+
+
+
     </div>
   );
 };

@@ -39,8 +39,8 @@ const Banner = () => {
             </div>
           </div>
           <div className="absolute flex justify-end gap-4 transform -translate-y-1/2 left-5 right-5 bottom-0">
-            <a href={`#slide${index === 0 ? images.length : index}`} className="btn text-white btn-circle bg-red-600">❮</a>
-            <a href={`#slide${index === images.length - 1 ? 1 : index + 2}`} className="btn btn-circle text-white bg-red-600">❯</a>
+            <a href={`#slide${index === 0 ? images.length : index}`} className="btn text-white btn-circle bg-green-400">❮</a>
+            <a href={`#slide${index === images.length - 1 ? 1 : index + 2}`} className="btn btn-circle text-white bg-green-400">❯</a>
           </div>
         </div>
       ))}

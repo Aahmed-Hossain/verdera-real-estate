@@ -6,7 +6,7 @@ import { axiosSecure } from "../../hooks/useAxiosSecure";
 const OfferNow = () => {
   const property = useLoaderData();
   const navigate = useNavigate();
-  console.log('single property',property);
+  // console.log('single property',property);
   const {
     property_image,
     property_title,
@@ -158,7 +158,7 @@ const OfferNow = () => {
         <input
           type="submit"
           className=" py-2 px-4 w-full rounded text-white font-bold text-lg bg-[#61d473] my-3"
-          value="Place Order"
+          value="Place Offer"
         />
       </form>
     </div>

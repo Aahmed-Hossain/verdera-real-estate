@@ -10,9 +10,10 @@ const Home = () => {
       <PageTitle title={"Verdera | Home"}></PageTitle>
       <Banner></Banner>
       <LatestProperty></LatestProperty>
+      <About></About>
       <MyReview></MyReview>
       <Testimony></Testimony>
-      <About></About>
+      
       
     </div>
   );

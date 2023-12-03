@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo/logo-.jpg'
 const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-gray-900">
+    <footer className="bg-gray-100 dark:bg-gray-900 mt-12">
       <div className="container p-6 mx-auto">
         <div className="lg:flex">
           <div className="w-full lg:w-2/5 ">
