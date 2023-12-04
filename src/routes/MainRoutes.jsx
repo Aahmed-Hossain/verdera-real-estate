@@ -48,19 +48,19 @@ const MainRoutes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/properties/${params.id}`),
+          fetch(`https://real-estate-company-server.vercel.app/properties/${params.id}`),
       },
       {
         path: "offerNow/:id",
         element: <OfferNow></OfferNow>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/properties/${params.id}`),
+          fetch(`https://real-estate-company-server.vercel.app/properties/${params.id}`),
       },
       // {
       //   path: "offerNowFromWishList/:id",
       //   element: <OfferNowFromWishList></OfferNowFromWishList>,
       //   loader: ({ params }) =>
-      //     fetch(`http://localhost:5000/allWishList/${params.id}`),
+      //     fetch(`https://real-estate-company-server.vercel.app/allWishList/${params.id}`),
       // },
       {
         path: "users",
@@ -118,7 +118,7 @@ const MainRoutes = createBrowserRouter([
         path: "myListings/updateProperties/:id",
         element: <PrivateRoute><AgentRoute><UpdateProperties></UpdateProperties> </AgentRoute></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/properties/${params.id}`)
+          fetch(`https://real-estate-company-server.vercel.app/properties/${params.id}`)
       },
       
       

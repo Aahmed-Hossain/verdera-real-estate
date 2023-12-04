@@ -23,7 +23,7 @@ const {user } = useAuth();
              return res.data;
         }
     })
-    console.log(calculatePrice.price)
+    console.log(calculatePrice)
    
     
     if(isLoading){

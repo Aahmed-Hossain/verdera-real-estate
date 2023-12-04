@@ -52,7 +52,7 @@ const Register = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm border border-[#39bb4c] rounded-none">
           <div className="card-body">
-            <h1 className={`text-3xl text-center font-bold text-[#39bb4c] ${loading ? 'animate-spin': ''}`}>
+            <h1 className={`text-3xl text-center font-bold text-[#39bb4c]`}>
               Sign Up Now
             </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
