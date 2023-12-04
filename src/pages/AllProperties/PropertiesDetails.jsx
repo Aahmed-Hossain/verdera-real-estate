@@ -130,7 +130,6 @@ const PropertiesDetails = () => {
               src={agent_image}
               alt=""
             />
-
             <div>
               <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
                 {agent_name}

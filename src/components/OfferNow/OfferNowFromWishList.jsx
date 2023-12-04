@@ -1,15 +1,11 @@
-import { useLoaderData, useLocation, useNavigate} from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
 import Swal from "sweetalert2";
-import useAuth from '../../hooks/useAuth';
-import PageTitle from "../PageTitle/PageTitle";
+import useAuth from "../../hooks/useAuth";
 import { axiosSecure } from "../../hooks/useAxiosSecure";
-const OfferNow = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const { data } = location.state || {};
-  console.log( 'data', data);
-  const property = useLoaderData();
-  // console.log('offer  property',property);
+import PageTitle from "../PageTitle/PageTitle";
+const OfferNowFromWishList = () => {
+  const wishList = useLoaderData();
+  console.log('wishList',wishList);
   const {
     property_image,
     property_title,
@@ -20,7 +16,8 @@ const OfferNow = () => {
     agent_image,
     agent_name,
     agent_email,
-  } = property || {};
+  } = wishList || {};
+  console.log(property_image);
   const { user } = useAuth();
   const handleOfferNow = (e) => {
     e.preventDefault();
@@ -51,7 +48,7 @@ const OfferNow = () => {
           Swal.fire("Great!", "Your Offer placed successfully!", "success");
         }
         form.reset();
-        navigate("/dashboard/myProperties");
+        // navigate("/offers");
       })
       .catch((error) => console.log(error));
   };
@@ -60,26 +57,26 @@ const OfferNow = () => {
       <PageTitle title={"Verdera | Offer Now"}></PageTitle>
       <div className=" ">
       <h2 className="text-center flex justify-center my-4  font-bold text-4xl text-[#61d473]">
-        {property_title || data?.property_title }
+        {property_title }
       </h2>
       </div>
       <div className="relative h-[20rem]">
-        <img src={property_image || data?.property_image} className="h-[20rem] w-full rounded-xl" />
+        <img src={property_image } className="h-[20rem] w-full rounded-xl" />
         <div className="absolute inset-0 bg-black opacity-10 rounded-xl"></div>
       </div>
       
       <div className="flex items-center gap-x-2 my-4">
             <img
               className="object-cover w-16 h-16 rounded-full"
-              src={agent_image || data?.agent_image}
+              src={agent_image}
               alt=""
             />
             <div>
               <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                {agent_name || data?.agent_name}
+                {agent_name}
               </h1>
               <p className="text-base text-gray-500 dark:text-gray-400">
-                {agent_email || data?.agent_email}
+                {agent_email}
               </p>
             </div>
             <div className="border-l-2 border-green-500 ml-3 text-xl">
@@ -135,12 +132,12 @@ const OfferNow = () => {
                   <span className="label-text">Price Range</span>
                 </label>
                 <input
-                  placeholder={ `${price_range?.[0]} - ${price_range?.[1]}` || `${data?.price_range[0]} `-` ${data?.price_range[1]}` }
+                  placeholder={ `${price_range?.[0]} - ${price_range?.[1]}`}
 
                   className="input border border-green-500 focus:outline-none focus:border-2 focus:border-green-500 w-full"
                   name="price"
-                  min={`${price_range?.[0]}` || `${data?.price_range?.[0]}`}
-                  max={`${price_range?.[1]}` || `${data?.price_range?.[1]}`}
+                  min={`${price_range?.[0]}`}
+                  max={`${price_range?.[1]}`}
                   type="number"
                   required
                 />
@@ -158,4 +155,4 @@ const OfferNow = () => {
   );
 };
 
-export default OfferNow;
+export default OfferNowFromWishList;

@@ -21,6 +21,11 @@ import ManageUser from "../pages/DashBoard/Admin/ManageUser/ManageUser";
 import MyWishList from "../pages/DashBoard/User/MyWishList/MyWishList";
 import MyReviews from "../pages/DashBoard/User/ReviewNow/MyReviews";
 import ManageReviews from "../pages/DashBoard/Admin/ManageReviews/ManageReviews";
+import UpdateProperties from "../pages/DashBoard/Agent/UpdateProperties";
+import OfferedProperties from "../pages/DashBoard/Agent/OfferedProperties";
+import MySoldProperties from "../pages/DashBoard/Agent/MySoldProperties";
+
+
 const MainRoutes = createBrowserRouter([
   {
     path: "/",
@@ -51,10 +56,12 @@ const MainRoutes = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/properties/${params.id}`),
       },
-      {
-        path: "/offers",
-        element: <BoughtProperties></BoughtProperties>,
-      },
+      // {
+      //   path: "offerNowFromWishList/:id",
+      //   element: <OfferNowFromWishList></OfferNowFromWishList>,
+      //   loader: ({ params }) =>
+      //     fetch(`http://localhost:5000/allWishList/${params.id}`),
+      // },
       {
         path: "users",
         element: <AllUsers></AllUsers>,
@@ -84,6 +91,14 @@ const MainRoutes = createBrowserRouter([
 
       },
       {
+        path: "myProperties",
+        element: <PrivateRoute><UserRoute><BoughtProperties></BoughtProperties></UserRoute></PrivateRoute>,
+      },
+      {
+        path: 'manageUsers',
+        element: <PrivateRoute><AdminRoute><ManageUser></ManageUser></AdminRoute></PrivateRoute>
+      },
+      {
         path:'addProperty',
         element: <PrivateRoute><AgentRoute><AddProperty></AddProperty></AgentRoute></PrivateRoute>
       },
@@ -92,9 +107,22 @@ const MainRoutes = createBrowserRouter([
         element: <PrivateRoute><AgentRoute><MyListings></MyListings></AgentRoute></PrivateRoute>
       },
       {
-        path: 'manageUsers',
-        element: <PrivateRoute><AdminRoute><ManageUser></ManageUser></AdminRoute></PrivateRoute>
+        path: 'offeredProperties',
+        element: <PrivateRoute><AgentRoute><OfferedProperties></OfferedProperties></AgentRoute></PrivateRoute>
       },
+      {
+        path: 'mySoldProperties',
+        element: <PrivateRoute><AgentRoute><MySoldProperties></MySoldProperties></AgentRoute></PrivateRoute>
+      },
+      {
+        path: "myListings/updateProperties/:id",
+        element: <PrivateRoute><AgentRoute><UpdateProperties></UpdateProperties> </AgentRoute></PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/properties/${params.id}`)
+      },
+      
+      
+      
       {
         path: 'manageProperties',
         element: <PrivateRoute><AdminRoute><ManageProperty></ManageProperty></AdminRoute></PrivateRoute>

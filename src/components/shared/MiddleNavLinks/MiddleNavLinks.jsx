@@ -9,7 +9,7 @@ const MiddleNavLinks = () => {
             {
                 user ? <>
                 <NavLink to="/dashboard" className={({ isActive})=>isActive ? 'border-b-2 text-green-600 border-green-600': 'hover:text-green-600'}>Dashboard</NavLink>
-                <NavLink to="/offers" className={({ isActive})=>isActive ? 'border-b-2 text-green-600 border-green-600': 'hover:text-green-600'}>Offers</NavLink>
+               
                 </> : ''
             }
         </div>

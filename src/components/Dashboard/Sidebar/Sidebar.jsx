@@ -63,13 +63,15 @@ const Sidebar = () => {
 
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
-            {/* If a user is host */}
-           {userRole.role === 'Agent' &&  <ToggleBtn toggleHandler={toggleHandler} />}
+            {/*TODO:   If a user is agent */}
+           {/* {userRole.role === 'Agent' &&  <ToggleBtn toggleHandler={toggleHandler} />} */}
             <nav>
               {/* Menu Items */}
 
               { userRole?.role === 'User'  && <UserMenu></UserMenu> }
-               { userRole?.role === 'Agent' ? toggle ? <UserMenu></UserMenu>  : <AgentMenu></AgentMenu> : ''}
+              {/* to execute toggle for agent can user and agent also */}
+               {/* { userRole?.role === 'Agent' ? toggle ? <UserMenu></UserMenu>  : <AgentMenu></AgentMenu> : ''} */}
+              { userRole?.role === 'Agent'  && <AgentMenu></AgentMenu> }
               { userRole?.role === 'Admin'  && <AdminMenu></AdminMenu> }
             </nav>
           </div>

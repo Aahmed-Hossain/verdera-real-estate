@@ -3,9 +3,10 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { axiosSecure } from '../../../../hooks/useAxiosSecure';
 import Loading from '../../../../components/shared/Loading/Loading';
+import useAuth from '../../../../hooks/useAuth';
 
 const ManageUser = () => {
-
+const {user} = useAuth();
   const { data: users = [], isLoading,refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -29,6 +30,25 @@ const handleMakeAdmin = (id) => {
         console.log('Made Admin', res.data);
         refetch();
         Swal.fire("Yes", "Made  Admin  Successfully", "success")
+    })
+    });
+  };
+const handleMakeAgent = (id) => {
+    Swal.fire({
+      title: "Do You Want to Make Agent?",
+      text: "The User will be Agent !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#2eea4a",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Make Agent!",
+    }).then((result) => {
+      if (result.isConfirmed)
+      axiosSecure.put(`/users/agent/${id}`)
+    .then(res=> {
+        console.log('Made Agent', res.data);
+        refetch();
+        Swal.fire("Yes", `Made ${user?.name}   Successfully`, "success")
     })
     });
   };
@@ -98,6 +118,22 @@ if(isLoading){
     <span className='relative'>{item.role === 'Admin' ? 'ADMIN' : 'Make Admin'}</span>
   </span>
 </button>
+
+
+
+{item.role !== 'Admin' &&  (<button
+  onClick={() => handleMakeAgent(item._id)}
+  disabled={item.role === 'Agent'} 
+  className={`px-5 py-2 bg-white text-md ${item.role === 'Agent' ? 'cursor-not-allowed' : ''}`}
+>
+  <span className='relative inline-block px-3 py-1 font-semibold leading-tight'>
+    <span
+      aria-hidden='true'
+      className={`absolute inset-0 ${item.role === 'Agent' ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600'} opacity-50 rounded-full`}
+    ></span>
+    <span className='relative'>{item.role === 'Agent' ? 'AGENT' : 'Make Agent'}</span>
+  </span>
+</button>)}
 
 
 

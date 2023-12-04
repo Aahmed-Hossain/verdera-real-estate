@@ -68,7 +68,7 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
             <p className="text-[#A2A2A2]">Agent Name: {agent_name}</p>
             <p className="text-[#A2A2A2]">Email: {agent_email}</p>
             <p className="text-[#A2A2A2] font-semibol">
-              {property_area}
+              Property Area: {property_area}
             </p>
             
           </div>
@@ -79,13 +79,6 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
           <p className="text-md">Status: <span className="text-blue-400 font-semibold"> {status}</span></p>
             <p>Date: {date}</p>
           </div>
-         {/* <Link to={`/update/${_id}`}>
-            <img
-              className="w-[2rem] hover: hover:bg-black hover:opacity-70"
-              src={edit}
-              alt=""
-            />
-          </Link> */}
         </div>
       </div>
     </div>

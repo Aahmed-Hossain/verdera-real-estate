@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { axiosSecure } from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-
 
 const WishListRow = ({item ,refetch}) => {
     const navigate = useNavigate();
@@ -95,7 +94,8 @@ const WishListRow = ({item ,refetch}) => {
         </button>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <button 
+        <button
+        // to={`/offerNowFromWishList/${item._id}`}
         onClick={()=> handleOfferNow(item._id)}
          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'>
           <span
