@@ -33,9 +33,9 @@ console.log(offer);
       text: "The Status will be Rejected !",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#2eea4a",
+      confirmButtonColor: "#2eeff",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Accept!",
+      confirmButtonText: "Yes, Reject!",
     }).then((result) => {
       if (result.isConfirmed)
       axiosSecure.put(`/allOffers/rejected/${id}`)
@@ -91,7 +91,7 @@ console.log(offer);
         </span>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        { offer.status === 'Accepted' ? <button
+        { (offer.status === 'Accepted' || offer.status === 'Rejected'  )  ?  '' :  <button
         onClick={()=> handleReject(offer._id)}
         className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight rounded-full hover:bg-red-400'>
           <span
@@ -99,11 +99,11 @@ console.log(offer);
             className='absolute inset-0 bg-red-200 opacity-50 rounded-full'
           ></span>
           <span className='relative'>Reject</span>
-        </button> : ''}
+        </button>}
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         {
-          offer.status === 'Rejected' ? 
+          (offer.status === 'Rejected' || offer.status === 'Accepted' ) ? '' :  
           <button
         onClick={()=> handleAccept(offer._id)}
          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight hover:bg-green-400 rounded-full'>
@@ -112,7 +112,7 @@ console.log(offer);
             className='absolute inset-0 bg-green-200  opacity-50 rounded-full'
           ></span>
           <span className='relative'>Accept</span>
-        </button > : ''}
+        </button >}
       </td>
     </tr>
   )

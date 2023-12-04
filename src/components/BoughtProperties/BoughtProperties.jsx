@@ -1,11 +1,31 @@
-import useOffers from "../../hooks/useOffers";
+
 import Loading from './../shared/Loading/Loading';
 import BoughtPropertyList from "./BoughtPropertyList/BoughtPropertyList";
-import img from '../../assets/images/logo/offerImg.jpg'
 import PageTitle from "../PageTitle/PageTitle";
+import useAuth from "../../hooks/useAuth";
+import { axiosSecure } from '../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const BoughtProperties = () => {
-    const  [offers, isLoading, refetch] = useOffers();
+const {user } = useAuth();
+    const {data:offers=[], isLoading, refetch} = useQuery({
+        queryKey:['offers',user?.email],
+        queryFn: async()=>{
+             const res = await axiosSecure.get(`/offers/user?email=${user?.email}`)
+             return res.data;
+        }
+       
+    })
+    const {data: calculatePrice=[], } = useQuery({
+        queryKey:['data',user?.email],
+        queryFn: async()=>{
+             const res = await axiosSecure.get(`/offers/accepted/calculatePrice?status=Accepted&email=${user?.email}`)
+             return res.data;
+        }
+    })
+    console.log(calculatePrice.price)
+   
+    
     if(isLoading){
         return <Loading></Loading>
     }
