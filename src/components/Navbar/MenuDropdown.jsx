@@ -80,19 +80,6 @@ const MenuDropdown = () => {
             </Link>
             </>
            }
-            {/* <Link
-              to="/offers"
-              className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
-            >
-              Bought Property
-            </Link> */}
-            {/* <Link
-              to="/users"
-              className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600"
-            >
-              All Users
-            </Link>
-            <Link onClick={handleLogout}  className="px-4 py-3 hover:bg-neutral-100 transition font-bold hover:text-green-600">Logout</Link> */}
           </div>
         </div>
       )}

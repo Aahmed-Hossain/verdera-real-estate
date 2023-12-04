@@ -9,7 +9,8 @@ const WishListRow = ({item ,refetch}) => {
     const navigate = useNavigate();
 
     const handleOfferNow = (id) => {
-        navigate(`/offerNow/${id}`)
+      const dataToSend = item;
+        navigate(`/offerNow/${id}`, { state: { data: dataToSend } })
     }
     const handleRemove = (id) => {
         Swal.fire({
@@ -82,16 +83,6 @@ const WishListRow = ({item ,refetch}) => {
           <span className='relative'>{item?.verification_status}</span>
         </span>
       </td>
-      {/* <td className='px-5 py-5 border-b border-gray-200 bg-white text-md font-md'>
-        <p className='text-gray-900 whitespace-no-wrap'>
-         <span className="text-blue-500 bg-blue-200 px-1 py-1 rounded-full"> {item?.verification_status}</span>
-        </p>
-      </td> */}
-      {/* <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>
-          {format(new Date(room?.to), 'P')}
-        </p>
-      </td> */}
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <button
         onClick={()=> handleRemove(item._id)}
@@ -105,20 +96,14 @@ const WishListRow = ({item ,refetch}) => {
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <button 
-        // to={`/offerNow/${item._id}`}
-
         onClick={()=> handleOfferNow(item._id)}
          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'>
           <span
             aria-hidden='true'
             className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
           ></span>
-          
           <span
-          
             className='relative'>Offer</span>
-        
-          
         </button>
       </td>
     </tr>

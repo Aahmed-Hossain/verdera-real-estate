@@ -8,6 +8,7 @@ import useAuth from "../../../../hooks/useAuth";
 const MyWishList = () => {
   const {user } = useAuth();
   const email = user.email;
+  
     const {data:wishList=[], isLoading, refetch} = useQuery({
         queryKey: ['wishList'],
         queryFn: async()=> {

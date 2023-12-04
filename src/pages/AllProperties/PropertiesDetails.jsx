@@ -13,8 +13,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { MdOutlineRateReview } from "react-icons/md";
-
+import { useState } from "react";
+import ReviewModal from "../DashBoard/User/ReviewNow/ReviewModal";
 const PropertiesDetails = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => {
+    setIsOpen(false)
+  }
+
   const { user } = useAuth();
   const email = user?.email;
   const propertyDetails = useLoaderData();
@@ -61,7 +67,7 @@ const PropertiesDetails = () => {
 
 
 
-  const { data: reviews = [] } = useQuery({
+  const { data: reviews = [], refetch } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/reviews/titleSpecific/${property_title}`);
@@ -70,31 +76,12 @@ const PropertiesDetails = () => {
   });
   console.log(reviews);
 
-const handleReview =()=> {
-  // dfjj
-}
-  // const handleReview = () => {
-  //   const reviewItem = {
-  //     agent_name:agent_name,
-  //     description,
-  //     agent_name,
-  //     image,
-  //     name,
-  //     property_title,
-  //     property_title,
-  //     review_time,
-  //   };
-  //   axiosSecure
-  //     .post(`/reviews/titleSpecific`, reviewItem)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       if (res.data.insertedId) {
-  //         Swal.fire("Great!", `${property_title} added to the review successfully!` , "success");
-  //       }
-  //       //  navigate("/wishList");
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
+  const [reviewInfo, setReviewInfo] =useState({
+     review :{name: user?.displayName, email:user?.email, image: user?.photoURL,  review_time: new Date(),
+
+      
+      property_title, property_location, property_area, price_range,agent_name,agent_email, }
+  });
 
   return (
     <div className="mb-8 pt-[5rem]">
@@ -109,7 +96,7 @@ const handleReview =()=> {
           <button 
           onClick={handleWishList}
           className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md">
-            <p className="font-semibold">Wish List</p>{" "}
+            <p className="font-semibold">Wish List</p>
             <h3 className="text-2xl font-bold">
               <CiBookmarkCheck></CiBookmarkCheck>
             </h3>
@@ -182,19 +169,21 @@ const handleReview =()=> {
           </Link>
         </div>
       </div>
-      <div className="flex justify-end">
-          <button 
-          onClick={()=>handleReview(_id)}
+      <div className="flex justify-end text-white">
+          <button
+          onClick={()=> setIsOpen(true)}
           className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md">
-            <p className="font-semibold">Leave Review</p>{" "}
+            <p className="font-semibold">Leave a Review</p>{" "}
             <h3 className="text-2xl  font-bold">
               <MdOutlineRateReview ></MdOutlineRateReview>
             </h3>
           </button>
           </div>
+          <ReviewModal
+           isOpen={isOpen} closeModal={closeModal} reviewInfo={reviewInfo} refetch={refetch}></ReviewModal>
       {/* review section */}
 
-      <div className="">
+     { reviews.length === 0 ? <div> <h2 className="font-bold text-center uppercase text-orange-500 my-4 text-2xl"> No Review Found  For "{property_title}"   </h2></div> : <div className="">
          
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper my-12">
         {reviews.map((review) => (
@@ -243,7 +232,7 @@ const handleReview =()=> {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </div>}
 
 
 
