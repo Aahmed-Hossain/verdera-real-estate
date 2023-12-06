@@ -24,11 +24,11 @@ const MenuDropdown = () => {
       <div className="flex flex-row items-center gap-3">
       
         {/* Become A Host btn */}
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
           <button className="disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-bold rounded-full  hover:text-green-500 transition">
             Host your home
           </button>
-        </div>
+        </div> */}
         {/* Dropdown btn */}
         <div
           onClick={() => setIsOpen(!isOpen)}

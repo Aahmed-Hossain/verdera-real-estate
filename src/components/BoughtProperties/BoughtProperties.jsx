@@ -14,7 +14,6 @@ const {user } = useAuth();
              const res = await axiosSecure.get(`/offers/user?email=${user?.email}`)
              return res.data;
         }
-       
     })
     const {data: calculatePrice=[], } = useQuery({
         queryKey:['data',user?.email],
@@ -24,18 +23,12 @@ const {user } = useAuth();
         }
     })
     console.log(calculatePrice)
-   
-    
     if(isLoading){
         return <Loading></Loading>
     }
     return (
         <div className="w-11/12 mx-auto">
             <PageTitle title={'Verdera | My Property'}></PageTitle>
-            {/* <div className="relative h-[20rem] mb-2">
-        <img src={img} className="h-[20rem] w-full rounded-xl" />
-        <div className="absolute inset-0 bg-black opacity-10 rounded-xl"></div>
-      </div> */}
             {
                 offers?.map(item=> <BoughtPropertyList key={item._id}
                 item={item} isLoading={isLoading} refetch={refetch}></BoughtPropertyList>)

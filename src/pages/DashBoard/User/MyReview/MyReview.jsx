@@ -7,7 +7,6 @@ import useReviews from "../../../../hooks/useReviews";
 import img from '../../../../assets/images/logo/quote-left 1.jpg'
 const MyReview = () => {
   const [reviews] = useReviews();
-  // console.log(reviews);
   return (
     <div className="my-20">
 <h1 className="text-center text-4xl font-bold my-2"> Latest Reviews Of Our Valued Customer</h1>

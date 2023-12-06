@@ -24,6 +24,7 @@ import ManageReviews from "../pages/DashBoard/Admin/ManageReviews/ManageReviews"
 import UpdateProperties from "../pages/DashBoard/Agent/UpdateProperties";
 import OfferedProperties from "../pages/DashBoard/Agent/OfferedProperties";
 import MySoldProperties from "../pages/DashBoard/Agent/MySoldProperties";
+import Profile from "../pages/DashBoard/Profile/Profile";
 
 
 const MainRoutes = createBrowserRouter([
@@ -43,16 +44,16 @@ const MainRoutes = createBrowserRouter([
       {
         path: "allProperties/propertiesDetails/:id",
         element: (
-          <PrivateRoute>
+          
             <PropertiesDetails></PropertiesDetails>
-          </PrivateRoute>
+         
         ),
         loader: ({ params }) =>
           fetch(`https://real-estate-company-server.vercel.app/properties/${params.id}`),
       },
       {
         path: "offerNow/:id",
-        element: <OfferNow></OfferNow>,
+        element:<PrivateRoute> <OfferNow></OfferNow></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`https://real-estate-company-server.vercel.app/properties/${params.id}`),
       },
@@ -62,6 +63,7 @@ const MainRoutes = createBrowserRouter([
       //   loader: ({ params }) =>
       //     fetch(`https://real-estate-company-server.vercel.app/allWishList/${params.id}`),
       // },
+      
       {
         path: "users",
         element: <AllUsers></AllUsers>,
@@ -80,6 +82,10 @@ const MainRoutes = createBrowserRouter([
     path: "/dashboard",
     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
+      {
+        path: 'profile',
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
+      },
       {
         path: 'myWishList',
         element: <PrivateRoute><UserRoute><MyWishList></MyWishList></UserRoute></PrivateRoute>

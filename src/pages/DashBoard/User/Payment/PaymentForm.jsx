@@ -5,7 +5,7 @@ import useAuth from '../../../../hooks/useAuth'
 import { axiosSecure } from '../../../../hooks/useAxiosSecure'
 import Swal from 'sweetalert2'
 
-const ReviewForm = ({ reviewInfo, closeModal,refetch }) => {
+const PaymentForm = ({ paymentInfo, closeModal,refetch }) => {
   const { user } = useAuth();
   const [reviewText, setReviewText] = useState('')
   const wordCount = reviewText.split(/\s+/).filter((word) => word.length > 0).length;
@@ -15,7 +15,7 @@ const ReviewForm = ({ reviewInfo, closeModal,refetch }) => {
    
     console.log('Review Text:', reviewText)
     const review = {
-        name: user?.displayName, email:user?.email, image: user?.photoURL, description: reviewText, agent_name:reviewInfo?.review?.agent_name, agent_email: reviewInfo?.review?.agent_email, property_title: reviewInfo?.review?.property_title, review_time: reviewInfo?.review?.review_time
+        name: user?.displayName, email:user?.email, image: user?.photoURL, description: reviewText, agent_name:paymentInfo?.review?.agent_name, agent_email: paymentInfo?.review?.agent_email, property_title: paymentInfo?.review?.property_title, review_time: paymentInfo?.review?.review_time
     }
     if (wordCount < 30) {
         Swal.fire("Opps!", `Please Write at least  30 words!` , "error");
@@ -26,7 +26,7 @@ const ReviewForm = ({ reviewInfo, closeModal,refetch }) => {
         console.log(res.data);
         refetch();
         if (res.data.insertedId) {
-          Swal.fire("Great!", `${reviewInfo?.review?.property_title} added to the review successfully!` , "success");
+          Swal.fire("Great!", `${paymentInfo?.review?.property_title} added to the review successfully!` , "success");
         }
         
       })
@@ -71,5 +71,5 @@ const ReviewForm = ({ reviewInfo, closeModal,refetch }) => {
   )
 }
 
-export default ReviewForm;
+export default PaymentForm;
 

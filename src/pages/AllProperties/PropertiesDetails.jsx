@@ -62,11 +62,6 @@ const PropertiesDetails = () => {
       .catch((error) => console.log(error));
   };
 
-
- 
-
-
-
   const { data: reviews = [], refetch } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
@@ -74,12 +69,9 @@ const PropertiesDetails = () => {
       return res.data;
     },
   });
-  console.log(reviews);
 
   const [reviewInfo, setReviewInfo] =useState({
      review :{name: user?.displayName, email:user?.email, image: user?.photoURL,  review_time: new Date(),
-
-      
       property_title, property_location, property_area, price_range,agent_name,agent_email, }
   });
 

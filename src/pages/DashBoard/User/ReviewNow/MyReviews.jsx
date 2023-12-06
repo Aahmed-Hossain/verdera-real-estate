@@ -16,7 +16,6 @@ const MyReviews = () => {
       return res.data;
     },
   });
-console.log(reviews)
 
   const handleDelete = (id) => {
     Swal.fire({

@@ -2,12 +2,11 @@
 import Loading from "../../shared/Loading/Loading";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import { useState } from "react";
+import PaymentModal from "../../../pages/DashBoard/User/Payment/PaymentModal";
+import useAuth from "../../../hooks/useAuth";
 /* eslint-disable react/prop-types */
 const BoughtPropertyList = ({ item, isLoading, refetch }) => {
- 
-  if (isLoading) {
-    return <Loading></Loading>
-  }
   const {
     _id,
     agent_email,
@@ -21,6 +20,19 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
     status,
     property_title,
   } = item;
+  const {user} = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => {
+    setIsOpen(false)
+  }
+  const [paymentInfo, setpaymentInfo] =useState({
+    payment :{name: user?.displayName, email:user?.email, image: user?.photoURL,  payment_time: new Date(),
+     property_title, property_location, property_area, price,agent_name,agent_email, }
+ });
+  
+  if (isLoading) {
+    return <Loading></Loading>
+  }
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -41,6 +53,10 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
     })
     });
   };
+
+
+
+  
   return (
     <div className=" ">
       <div className="flex items-center justify-between gap-2  py-2 border border-slate-200 rounded-xl mb-4">
@@ -70,17 +86,33 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
             <p className="text-[#A2A2A2] font-semibol">
               Property Area: {property_area}
             </p>
+            <p className="text-[#A2A2A2]">Date: {date}</p>
             
           </div>
         </div>
         {/* right div */}
         <div className="flex items-center gap-5 pr-2">
           <div>
+          {status === "Accepted" ? <button
+        onClick={()=> setIsOpen(true)}
+         className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight w-full'>
+          <span
+            aria-hidden='true'
+            className='absolute inset-0 bg-green-400 opacity-50 rounded-full hover:bg-green-500'
+          ></span>
+          <span
+            className='relative'>Pay</span>
+        </button> : ''}
+
+
           <p className="text-md">Status: <span className="text-blue-400 font-semibold"> {status}</span></p>
-            <p>Date: {date}</p>
+           
           </div>
         </div>
       </div>
+
+
+      <PaymentModal  closeModal={closeModal} isOpen={isOpen} paymentInfo={paymentInfo}></PaymentModal>
     </div>
   );
 };
