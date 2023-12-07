@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import PaymentForm from './PaymentForm';
-
-
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_STRIPE_PK);
 const PaymentModal = ({ closeModal, isOpen, paymentInfo,refetch }) => {
+  
+  
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -40,38 +43,40 @@ const PaymentModal = ({ closeModal, isOpen, paymentInfo,refetch }) => {
                 </Dialog.Title>
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Property Title: {paymentInfo.review.property_title}
+                    Property Title: {paymentInfo.payment?.property_title}
                   </p>
                 </div>
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Location: {paymentInfo?.review?.property_location}
+                    Location: {paymentInfo?.payment?.property_location}
                   </p>
                 </div>
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Price: ${paymentInfo?.review?.price_range[0] + "- $" + paymentInfo?.review?.price_range[1]}
+                    Price: ${paymentInfo?.payment?.price}
                   </p>
                   <p className='text-sm text-gray-500'>
-                    Area: {paymentInfo?.review?.property_area} Sq. ft.
+                    Area: {paymentInfo?.payment?.property_area} Sq. ft.
                   </p>
                 </div>
                 <div className='mt-2'>
 
                     <h1>Agent: </h1>
                   <p className='text-sm text-gray-500'>
-                    Name: {paymentInfo?.review?.agent_name}
+                    Name: {paymentInfo?.payment?.agent_name}
                   </p>
                 </div>
 
                 <div className=''>
                   <p className='text-sm text-gray-500'>
-                    Email: {paymentInfo?.review?.agent_email}
+                    Email: {paymentInfo?.payment?.agent_email}
                   </p>
                 </div>
                 <hr className='mt-8 ' />
                 {/* Card data form */}
+                <Elements stripe={stripePromise}>
                 <PaymentForm paymentInfo={paymentInfo} closeModal={closeModal} refetch={refetch}></PaymentForm>
+                </Elements>
               </Dialog.Panel>
             </Transition.Child>
           </div>

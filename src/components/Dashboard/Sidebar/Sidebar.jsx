@@ -13,7 +13,6 @@ import useRole from '../../../hooks/useRole';
 import UserMenu from './UserMenu/UserMenu';
 import AdminMenu from './AdminMenu/AdminMenu';
 
-
 const Sidebar = () => {
   const [userRole] = useRole()
   console.log(userRole);
@@ -30,7 +29,6 @@ const Sidebar = () => {
     setActive(!isActive)
   }
   
-  // console.log(userRole.role);
   return (
     <>
       {/* Small Screen Navbar */}

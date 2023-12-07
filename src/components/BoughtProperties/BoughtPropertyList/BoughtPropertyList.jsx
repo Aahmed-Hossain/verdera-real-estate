@@ -27,7 +27,8 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
   }
   const [paymentInfo, setpaymentInfo] =useState({
     payment :{name: user?.displayName, email:user?.email, image: user?.photoURL,  payment_time: new Date(),
-     property_title, property_location, property_area, price,agent_name,agent_email, }
+     property_title,
+      property_location, property_area, price,agent_name,agent_email,property_id:_id }
  });
   
   if (isLoading) {
@@ -94,6 +95,7 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
         <div className="flex items-center gap-5 pr-2">
           <div>
           {status === "Accepted" ? <button
+        // disabled={}
         onClick={()=> setIsOpen(true)}
          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight w-full'>
           <span
@@ -109,10 +111,11 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
            
           </div>
         </div>
+        <PaymentModal  closeModal={closeModal} isOpen={isOpen} paymentInfo={paymentInfo}></PaymentModal>
       </div>
 
 
-      <PaymentModal  closeModal={closeModal} isOpen={isOpen} paymentInfo={paymentInfo}></PaymentModal>
+      
     </div>
   );
 };

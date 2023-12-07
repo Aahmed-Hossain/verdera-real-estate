@@ -25,6 +25,7 @@ import UpdateProperties from "../pages/DashBoard/Agent/UpdateProperties";
 import OfferedProperties from "../pages/DashBoard/Agent/OfferedProperties";
 import MySoldProperties from "../pages/DashBoard/Agent/MySoldProperties";
 import Profile from "../pages/DashBoard/Profile/Profile";
+import MyBoughtProperties from "../pages/DashBoard/User/Payment/MyBoughtProperties/MyBoughtProperties";
 
 
 const MainRoutes = createBrowserRouter([
@@ -99,6 +100,10 @@ const MainRoutes = createBrowserRouter([
       {
         path: "myProperties",
         element: <PrivateRoute><UserRoute><BoughtProperties></BoughtProperties></UserRoute></PrivateRoute>,
+      },
+      {
+        path: "myBoughtProperty",
+        element: <PrivateRoute><UserRoute><MyBoughtProperties></MyBoughtProperties></UserRoute></PrivateRoute>,
       },
       {
         path: 'manageUsers',
