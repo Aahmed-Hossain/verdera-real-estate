@@ -77,7 +77,8 @@ const PaymentForm = ({ paymentInfo, closeModal }) => {
       };
       try {
         await savePaymentInfo(paymentData);
-        await updatePaymentStatus(paymentInfo?.payment?.property_id, true);
+        // TODO: Tried to change sale_status of the paid proprty but not got error. 
+        // await updatePaymentStatus(paymentInfo?.payment?.property_id, true);
         Swal.fire('Great', `Payment Successful`,'success')
         navigate ('/dashboard/myBoughtProperty')
       } catch(err){
