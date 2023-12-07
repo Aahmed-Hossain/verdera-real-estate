@@ -6,6 +6,8 @@ import { useState } from "react";
 import PaymentModal from "../../../pages/DashBoard/User/Payment/PaymentModal";
 import useAuth from "../../../hooks/useAuth";
 /* eslint-disable react/prop-types */
+
+
 const BoughtPropertyList = ({ item, isLoading, refetch }) => {
   const {
     _id,

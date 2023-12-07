@@ -6,6 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import PaymentForm from './PaymentForm';
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_STRIPE_PK);
 const PaymentModal = ({ closeModal, isOpen, paymentInfo,refetch }) => {
+  console.log(stripePromise);
   
   
   return (

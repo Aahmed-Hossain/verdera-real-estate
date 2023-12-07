@@ -4,20 +4,19 @@ import { useEffect, useState } from "react";
 import "./PaymentForm.css";
 import { ImSpinner9 } from "react-icons/im";
 import useAuth from "./../../../../hooks/useAuth";
-import { createPaymentIntent, savePaymentInfo, updatePaymentStatus } from "../../../../components/shared/PaymentIntent";
+import { createPaymentIntent, savePaymentInfo } from "../../../../components/shared/PaymentIntent";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+
 
 const PaymentForm = ({ paymentInfo, closeModal }) => {
-  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
-  
-  console.log('paymentInfo.payment.property_id',paymentInfo.payment.property_id);
+  const [transactionID, setTransactionID] = useState(null);
+  console.log(transactionID);
 
   // Create Payment Intent
   useEffect(() => {
@@ -28,6 +27,8 @@ const PaymentForm = ({ paymentInfo, closeModal }) => {
       });
     }
   }, [paymentInfo]);
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -64,12 +65,10 @@ const PaymentForm = ({ paymentInfo, closeModal }) => {
       console.log(confirmError);
       setCardError(confirmError.message);
     }
-
     console.log("payment intent", paymentIntent);
 
     if (paymentIntent.status === "succeeded") {
       // save payment information to the server
-      // Update room status in db
       const paymentData = {
         ...paymentInfo,
         transactionId: paymentIntent.id,
@@ -77,10 +76,12 @@ const PaymentForm = ({ paymentInfo, closeModal }) => {
       };
       try {
         await savePaymentInfo(paymentData);
-        // TODO: Tried to change sale_status of the paid proprty but not got error. 
+        // TODO: Tried to change sale_status of the paid proprty but not successeded. got error. 
         // await updatePaymentStatus(paymentInfo?.payment?.property_id, true);
-        Swal.fire('Great', `Payment Successful`,'success')
-        navigate ('/dashboard/myBoughtProperty')
+        Swal.fire('Great', `Payment Successful${paymentIntent.id}`,'success');
+        setTransactionID(paymentIntent.id)
+        closeModal();
+        // navigate ('/dashboard/myBoughtProperty')
       } catch(err){
         console.log(err);
         Swal.fire("Error",`${err.message}`, 'error')
@@ -110,7 +111,7 @@ const PaymentForm = ({ paymentInfo, closeModal }) => {
           }}
         />
         <div className="flex mt-2 justify-around">
-          <button
+          <button 
             type="button"
             className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
             onClick={closeModal}
