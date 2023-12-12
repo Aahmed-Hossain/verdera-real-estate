@@ -47,13 +47,13 @@ const handleMakeAgent = (id) => {
       axiosSecure.put(`/users/agent/${id}`)
     .then(res=> {
         console.log('Made Agent', res.data);
+        Swal.fire("Yes", `Made Agent  Successfully`, "success")
         refetch();
-        Swal.fire("Yes", `Made ${user?.name}   Successfully`, "success")
     })
     });
   };
 
-console.log(users);
+// console.log(users);
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -73,6 +73,28 @@ console.log(users);
               text: "User has been deleted.",
               icon: "success",
             });
+          }
+        });
+      }
+    });
+  };
+
+  const handleMarkFraud = (email)=> {
+    console.log('fraud', email)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Mark Fraud!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/mark-fraud/${email}`).then((res) => {
+          if (res.data.deletedCount) {
+            Swal.fire("Yes", `Marked Fraud  Successfully and deleted associated property`, "success")
+            refetch();
           }
         });
       }
@@ -151,18 +173,22 @@ if(isLoading){
           <span className='relative'>Delete User</span>
         </span>
       </button>)}
-      {item.role ==='Agent' && <button
-    //    onClick={() => handleMarkFraud(item._id)}
-      className='px-5 py-2 bg-whit text-md'>
+
+      {(item.role ==='Agent' || item.role ==='Fraud') && <button
+       onClick={() => handleMarkFraud(item.email)}
+      disabled={item.role ==='Fraud'}
+      className={`px-5 py-2 bg-white text-md ${item.role === 'Fraud' ? 'cursor-not-allowed' : ''}`}>
         
         <span className='relative cursor-pointer inline-block px-3 py-1 font-semibold t leading-tight rounded-full bg-orange-400 hover:bg-orange-500'>
           <span
             aria-hidden='true'
             className='absolute inset-0  opacity-30 rounded-full'
           ></span>
-          <span className='relative'>Mark Fraud</span>
+          <span className='relative'>{item.role ==='Agent' ? 'Make Fraud' : 'Fraud'}</span>
         </span>
-      </button>}
+      </button> }
+
+
         </div>
           </div>
         ))}

@@ -4,19 +4,19 @@ import { useEffect, useState } from "react";
 import "./PaymentForm.css";
 import { ImSpinner9 } from "react-icons/im";
 import useAuth from "./../../../../hooks/useAuth";
-import { createPaymentIntent, savePaymentInfo } from "../../../../components/shared/PaymentIntent";
+import { createPaymentIntent, savePaymentInfo} from "../../../../components/shared/PaymentIntent";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { axiosSecure } from "../../../../hooks/useAxiosSecure";
 
 
-const PaymentForm = ({ paymentInfo, closeModal }) => {
+const PaymentForm = ({ paymentInfo, closeModal  }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
-  const [transactionID, setTransactionID] = useState(null);
-  console.log(transactionID);
 
   // Create Payment Intent
   useEffect(() => {
@@ -65,7 +65,7 @@ const PaymentForm = ({ paymentInfo, closeModal }) => {
       console.log(confirmError);
       setCardError(confirmError.message);
     }
-    console.log("payment intent", paymentIntent);
+    // console.log("payment intent", paymentIntent);
 
     if (paymentIntent.status === "succeeded") {
       // save payment information to the server
@@ -76,10 +76,9 @@ const PaymentForm = ({ paymentInfo, closeModal }) => {
       };
       try {
         await savePaymentInfo(paymentData);
-        // TODO: Tried to change sale_status of the paid proprty but not successeded. got error. 
-        // await updatePaymentStatus(paymentInfo?.payment?.property_id, true);
-        Swal.fire('Great', `Payment Successful${paymentIntent.id}`,'success');
-        setTransactionID(paymentIntent.id)
+        //Changing :  updated the transaction id in the offerCollection which has been paid by client
+        await axiosSecure.patch(`/update-transactionID/${paymentInfo?.payment?.property_id}`, {transaction_id: paymentIntent.id})
+        Swal.fire('Great', `Payment Successful ${paymentIntent.id}`,'success');
         closeModal();
         // navigate ('/dashboard/myBoughtProperty')
       } catch(err){

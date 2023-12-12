@@ -1,5 +1,5 @@
 
-import { BsFillHouseAddFill, } from 'react-icons/bs'
+import { BsFillHouseAddFill, BsGraphUp, } from 'react-icons/bs'
 import { MdOutlineHomeWork } from "react-icons/md";
 import MenuList from '../DashBoard/Sidebar/MenuList';
 import { LiaCartPlusSolid } from "react-icons/lia";
@@ -8,11 +8,11 @@ import { MdOutlineLocalOffer } from "react-icons/md";
 const AgentMenu = () => {
     return (
         <>
-            {/* <MenuList
+            <MenuList
                 icon={BsGraphUp}
                 label='Statistics'
                 address='/dashboard'
-              /> */}
+              />
               <MenuList
                 icon={BsFillHouseAddFill}
                 label='Add Property'

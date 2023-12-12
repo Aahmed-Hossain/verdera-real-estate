@@ -7,7 +7,7 @@ const OfferNow = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { data } = location.state || {};
-  console.log( 'data', data);
+  // console.log( 'data', data);
   const property = useLoaderData();
   // console.log('offer  property',property);
   const {

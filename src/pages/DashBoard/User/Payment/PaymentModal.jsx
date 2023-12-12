@@ -6,7 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import PaymentForm from './PaymentForm';
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_STRIPE_PK);
 const PaymentModal = ({ closeModal, isOpen, paymentInfo,refetch }) => {
-  console.log(stripePromise);
+  // console.log(stripePromise);
   
   
   return (
@@ -55,6 +55,7 @@ const PaymentModal = ({ closeModal, isOpen, paymentInfo,refetch }) => {
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
                     Price: ${paymentInfo?.payment?.price}
+                    ID: {paymentInfo?.payment?.property_id}
                   </p>
                   <p className='text-sm text-gray-500'>
                     Area: {paymentInfo?.payment?.property_area} Sq. ft.
@@ -76,7 +77,8 @@ const PaymentModal = ({ closeModal, isOpen, paymentInfo,refetch }) => {
                 <hr className='mt-8 ' />
                 {/* Card data form */}
                 <Elements stripe={stripePromise}>
-                <PaymentForm paymentInfo={paymentInfo} closeModal={closeModal} refetch={refetch}></PaymentForm>
+                <PaymentForm paymentInfo={paymentInfo} closeModal={closeModal} refetch={refetch}
+                ></PaymentForm>
                 </Elements>
               </Dialog.Panel>
             </Transition.Child>

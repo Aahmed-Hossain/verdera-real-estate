@@ -14,15 +14,17 @@ const {user } = useAuth();
              const res = await axiosSecure.get(`/offers/user?email=${user?.email}`)
              return res.data;
         }
-    })
-    const {data: calculatePrice=[], } = useQuery({
-        queryKey:['data',user?.email],
-        queryFn: async()=>{
-             const res = await axiosSecure.get(`/offers/accepted/calculatePrice?status=Accepted&email=${user?.email}`)
-             return res.data;
-        }
-    })
-    console.log(calculatePrice)
+    });
+    
+    // TODO: to calculate total price for specific user
+    // const {data: calculatePrice=[], } = useQuery({
+    //     queryKey:['data',user?.email],
+    //     queryFn: async()=>{
+    //          const res = await axiosSecure.get(`/offers/accepted/calculatePrice?status=Accepted&email=${user?.email}`)
+    //          return res.data;
+    //     }
+    // })
+    // console.log(calculatePrice)
     if(isLoading){
         return <Loading></Loading>
     }

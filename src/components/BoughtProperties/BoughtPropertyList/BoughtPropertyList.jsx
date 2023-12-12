@@ -9,6 +9,7 @@ import useAuth from "../../../hooks/useAuth";
 
 
 const BoughtPropertyList = ({ item, isLoading, refetch }) => {
+
   const {
     _id,
     agent_email,
@@ -21,14 +22,15 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
     property_location,
     status,
     property_title,
-  } = item;
+    transactionId
+  } = item || {};
   const {user} = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => {
     setIsOpen(false)
   }
   const [paymentInfo, setpaymentInfo] =useState({
-    payment :{name: user?.displayName, email:user?.email, image: user?.photoURL,  payment_time: new Date(),
+    payment :{name: user?.displayName, email:user?.email, image: user?.photoURL,  payment_time: new Date(),property_image,
      property_title,
       property_location, property_area, price,agent_name,agent_email,property_id:_id }
  });
@@ -90,30 +92,37 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
               Property Area: {property_area}
             </p>
             <p className="text-[#A2A2A2]">Date: {date}</p>
+            <p className="text-[#A2A2A2]">Date: { _id}</p>
             
           </div>
         </div>
         {/* right div */}
         <div className="flex items-center gap-5 pr-2">
           <div>
-          {status === "Accepted" ? <button
-        // disabled={}
-        onClick={()=> setIsOpen(true)}
-         className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight w-full'>
-          <span
-            aria-hidden='true'
-            className='absolute inset-0 bg-green-400 opacity-50 rounded-full hover:bg-green-500'
-          ></span>
-          <span
-            className='relative'>Pay</span>
-        </button> : ''}
+       
+
+{status === "Accepted" && !transactionId ? (
+  <button
+    onClick={() => setIsOpen(true)}
+    className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight w-full'>
+    <span
+      aria-hidden='true'
+      className='absolute inset-0 bg-green-400 opacity-50 rounded-full hover:bg-green-500'
+    ></span>
+    <span className='relative'>Pay</span>
+  </button>
+) : (
+  <p>Transaction ID: {transactionId}</p>
+)}
+
 
 
           <p className="text-md">Status: <span className="text-blue-400 font-semibold"> {status}</span></p>
            
           </div>
         </div>
-        <PaymentModal  closeModal={closeModal} isOpen={isOpen} paymentInfo={paymentInfo}></PaymentModal>
+        <PaymentModal  closeModal={closeModal} isOpen={isOpen} paymentInfo={paymentInfo} 
+        ></PaymentModal>
       </div>
 
 

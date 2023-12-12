@@ -1,22 +1,18 @@
-import axios from "axios"
+import axios from "axios";
+import { axiosSecure } from "../../hooks/useAxiosSecure";
+
 
 
  export const createPaymentIntent = async (price) => {
-    const {data} = await axios.post('http://localhost:5000/createPaymentIntent',price);
+    const {data} = await axiosSecure.post('/createPaymentIntent',price);
     return data;
  };
 
  export const savePaymentInfo = async(paymentData)=> {
-   const {data} = await axios.post('http://localhost:5000/payments', paymentData);
+   const {data} = await axiosSecure.post('/payments', paymentData);
    return data;
  };
 
- export const updatePaymentStatus = async (id, status) => {
-   const { data } = await axios.patch(`http://localhost:5000/saleStatus/${id}`, null, {
-     params: {
-       status: status,
-     },
-   });
-   return data;
- };
+
+
 
