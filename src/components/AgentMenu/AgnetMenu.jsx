@@ -1,9 +1,10 @@
 
-import { BsFillHouseAddFill, BsGraphUp, } from 'react-icons/bs'
+import { BsFillHouseAddFill } from 'react-icons/bs'
 import { MdOutlineHomeWork } from "react-icons/md";
-import MenuList from '../DashBoard/Sidebar/MenuList';
 import { LiaCartPlusSolid } from "react-icons/lia";
 import { MdOutlineLocalOffer } from "react-icons/md";
+import { BsGraphUp } from "react-icons/bs";
+import MenuList from '../Dashboard/Sidebar/MenuList';
 
 const AgentMenu = () => {
     return (

@@ -7,7 +7,7 @@ const OfferedProperties = () => {
     const [offers, isLoading, refetch] = useOffers();
      return (
         <>
-        <PageTitle title={'Dashboard | Listings'}></PageTitle>
+        <PageTitle title={'Dashboard | Offerd Properties'}></PageTitle>
     
           <div className='container mx-auto px-4 sm:px-8'>
             <div className='py-8'>

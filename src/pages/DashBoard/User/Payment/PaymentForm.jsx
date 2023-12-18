@@ -6,11 +6,12 @@ import { ImSpinner9 } from "react-icons/im";
 import useAuth from "./../../../../hooks/useAuth";
 import { createPaymentIntent, savePaymentInfo} from "../../../../components/shared/PaymentIntent";
 import Swal from "sweetalert2";
-import axios from "axios";
 import { axiosSecure } from "../../../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 
 const PaymentForm = ({ paymentInfo, closeModal  }) => {
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -80,7 +81,7 @@ const PaymentForm = ({ paymentInfo, closeModal  }) => {
         await axiosSecure.patch(`/update-transactionID/${paymentInfo?.payment?.property_id}`, {transaction_id: paymentIntent.id})
         Swal.fire('Great', `Payment Successful ${paymentIntent.id}`,'success');
         closeModal();
-        // navigate ('/dashboard/myBoughtProperty')
+        navigate ('/dashboard/myBoughtProperty')
       } catch(err){
         console.log(err);
         Swal.fire("Error",`${err.message}`, 'error')

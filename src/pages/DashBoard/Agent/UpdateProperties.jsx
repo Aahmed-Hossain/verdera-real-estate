@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import { uploadImg } from "../../../components/shared/UploadImage/UploadImage";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import PageTitle from "../../../components/PageTitle/PageTitle";
 
 const UpdateProperties = () => {
     const updateProperty = useLoaderData();
@@ -293,6 +294,7 @@ const UpdateProperties = () => {
           </button>
         </form>
       </div>
+      <PageTitle title={'Dashboard | Update Property'}></PageTitle>
     </div>
   );
 };

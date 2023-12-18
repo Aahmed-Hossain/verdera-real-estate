@@ -26,6 +26,7 @@ import OfferedProperties from "../pages/DashBoard/Agent/OfferedProperties";
 import MySoldProperties from "../pages/DashBoard/Agent/MySoldProperties";
 import Profile from "../pages/DashBoard/Profile/Profile";
 import MyBoughtProperties from "../pages/DashBoard/User/Payment/MyBoughtProperties/MyBoughtProperties";
+import Statistics from "../pages/DashBoard/Agent/Statistics";
 
 
 const MainRoutes = createBrowserRouter([
@@ -118,6 +119,10 @@ const MainRoutes = createBrowserRouter([
         element: <PrivateRoute><AgentRoute><MyListings></MyListings></AgentRoute></PrivateRoute>
       },
       {
+        path: '',
+        element: <PrivateRoute><AgentRoute><Statistics></Statistics></AgentRoute></PrivateRoute>
+      },
+      {
         path: 'offeredProperties',
         element: <PrivateRoute><AgentRoute><OfferedProperties></OfferedProperties></AgentRoute></PrivateRoute>
       },
@@ -131,9 +136,6 @@ const MainRoutes = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://real-estate-company-server.vercel.app/properties/${params.id}`)
       },
-      
-      
-      
       {
         path: 'manageProperties',
         element: <PrivateRoute><AdminRoute><ManageProperty></ManageProperty></AdminRoute></PrivateRoute>

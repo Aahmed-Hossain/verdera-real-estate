@@ -14,16 +14,16 @@ import UserMenu from "./UserMenu/UserMenu";
 import AdminMenu from "./AdminMenu/AdminMenu";
 
 const Sidebar = () => {
-  const [userRole, isLoading] = useRole();
+  const [userRole] = useRole();
 
-  console.log(userRole, { isLoading });
-  const { logOut, loading } = useAuth();
+  // console.log(userRole, { isLoading });
+  const { logOut } = useAuth();
 
-  console.log({ auth_provider: loading });
+  // console.log({ auth_provider: loading });
   const [toggle, setToggle] = useState(false);
   const [isActive, setActive] = useState(false);
 
-  //   For guest/host menu item toggle button
+  //   For menu item toggle button
   const toggleHandler = (event) => {
     setToggle(event.target.checked);
   };
@@ -71,14 +71,11 @@ const Sidebar = () => {
             ) : (
               <nav>
                 {/* Menu Items */}
-                {/* { userRole?.role === 'User'  && <UserMenu></UserMenu> } */}
+                { userRole?.role === 'User'  && <UserMenu></UserMenu> }
               {/* to execute toggle for agent can user and agent also */}
                {/* { userRole?.role === 'Agent' ? toggle ? <UserMenu></UserMenu>  : <AgentMenu></AgentMenu> : ''} */}
-              {/* { userRole?.role === 'Agent'  && <AgentMenu></AgentMenu> } */}
-              {/* { userRole?.role === 'Admin'  && <AdminMenu></AdminMenu> } */}
-
-
-                {getMenus(userRole.role)}
+              { userRole?.role === 'Agent'  && <AgentMenu></AgentMenu> }
+              { userRole?.role === 'Admin'  && <AdminMenu></AdminMenu> }
               </nav>
             )}
           </div>
@@ -97,7 +94,6 @@ const Sidebar = () => {
             className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
           >
             <GrLogout className="w-5 h-5" />
-
             <span className="mx-4 font-medium">Logout</span>
           </button>
         </div>
@@ -107,18 +103,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-const getMenus = (role) => {
-  switch (role) {
-    case "Admin":
-      return <AdminMenu></AdminMenu>
-    case "User":
-      return <UserMenu></UserMenu>
-    case "Agent":
-      return < AgentMenu></AgentMenu>
-    default: 
-    return 
-
-  }
-  
-};

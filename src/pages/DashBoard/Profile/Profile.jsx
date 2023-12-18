@@ -5,9 +5,9 @@ import PageTitle from './../../../components/PageTitle/PageTitle';
 
 const Profile = () => {
   const { user } = useAuth();
-  console.log(user.uid);
+  // console.log(user.uid);
   const [userRole] = useRole();
-  console.log(userRole);
+  // console.log(userRole);
   return (
     <div className='flex justify-center items-center h-screen'>
       <PageTitle title={"Dashboard | Profile"}></PageTitle>

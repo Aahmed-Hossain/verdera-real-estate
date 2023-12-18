@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import SocialLogin from "../../components/shared/SocialLogin";
 import Lottie from "lottie-react";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const Login = () => {
   const [disable, setDisable] = useState(false);
@@ -19,7 +20,7 @@ const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
-  const { logIn } = useAuth();
+  const { logIn,loading } = useAuth();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -30,6 +31,10 @@ const Login = () => {
       Swal.fire("Great", "User Created Successfully", "success");
       form.reset();
     navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => {
+      console.error(error);
+      Swal.fire('Oops!', `${error.message}`, 'error');
     });
   };
   const handleValidateCaptcha = (e) => {
@@ -95,9 +100,9 @@ const Login = () => {
                 </div>
               </div>
 
-              <div className="form-control mt-6">
-                <input
-                  className={`hover:bg-[#2eea4a] bg-[#39bb4c] text-white font-bold py-2 px-4 w-full
+              <div className="form-control mt-6 hover:bg-[#39bb4c]  bg-[#2eea4a] text-white font-bold py-2 px-4 w-full">
+                { loading ? <TbFidgetSpinner className="m-auto animate-spin" size={24} /> : (<input
+                  className={`
                 
                   //  use it for disAble
                   `}
@@ -107,7 +112,7 @@ const Login = () => {
                   type="submit"
                   value="Login"
                   disabled={disable}
-                />
+                />)}
               </div>
             </form>
             <p className="divider">OR</p>

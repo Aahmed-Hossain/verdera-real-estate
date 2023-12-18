@@ -55,7 +55,6 @@ const PaymentModal = ({ closeModal, isOpen, paymentInfo,refetch }) => {
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
                     Price: ${paymentInfo?.payment?.price}
-                    ID: {paymentInfo?.payment?.property_id}
                   </p>
                   <p className='text-sm text-gray-500'>
                     Area: {paymentInfo?.payment?.property_area} Sq. ft.

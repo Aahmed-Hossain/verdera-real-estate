@@ -7,6 +7,7 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import PageTitle from "../../../components/PageTitle/PageTitle";
 
 const AddProperty = () => {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const AddProperty = () => {
       agent_image,
       agent_email,
     };
-    console.log(addProperty);
+    // console.log(addProperty);
     setLoading(true);
     const res = await axiosSecure.post('/properties', addProperty)
     setUploadImgText('Uploaded')
@@ -78,9 +79,6 @@ const AddProperty = () => {
           Swal.fire('Great', "You have Added Property Successfully", 'success') 
         }
         navigate('/dashboard/myListings')
-           
-
-
   }
    
   return (
@@ -277,6 +275,7 @@ const AddProperty = () => {
           </button>
         </form>
       </div>
+      <PageTitle title={'Dashboard | Add Property'}></PageTitle>
     </div>
   );
 };

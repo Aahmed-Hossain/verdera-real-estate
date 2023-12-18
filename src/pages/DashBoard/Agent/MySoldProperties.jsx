@@ -1,26 +1,12 @@
 
-import useRole from "../../../hooks/useRole";
-import { useQuery } from "@tanstack/react-query";
 import PageTitle from "../../../components/PageTitle/PageTitle";
 import MySoldPropertyRow from "./MySoldPropertyRow";
-import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import useSoldProperties from "../../../hooks/useSoldProperties";
 
 const MySoldProperties = () => {
-  const [userRole] = useRole();
-  const email = userRole?.email;
+  const [soldProperties] = useSoldProperties();
 
-  const { data: soldProperties = [] } = useQuery({
-    queryKey: ["soldProperties"],
-    queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/payment/specifiAgent?email=${email}`
-      );
-      return res.data;
-    },
-  });
-
-  console.log(soldProperties);
-
+const totalPrice = soldProperties.reduce((total, item)=>total + parseFloat(item.payment.price), 0)
   return (
     <>
       <PageTitle title={"Dashboard | Sold Property"}></PageTitle>
@@ -60,7 +46,7 @@ const MySoldProperties = () => {
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-bold"
                     >
-                      Price
+                      Price($)
                     </th>
                   </tr>
                 </thead>
@@ -72,7 +58,9 @@ const MySoldProperties = () => {
                     ></MySoldPropertyRow>
                   ))}
                 </tbody>
+                
               </table>
+              <tr className="flex justify-between px-3 font-bold text-xl"><p>Total Sold Amount:</p> <h3>{totalPrice} $ </h3></tr>
             </div>
           </div>
         </div>

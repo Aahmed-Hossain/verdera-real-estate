@@ -6,10 +6,7 @@ import { useState } from "react";
 import PaymentModal from "../../../pages/DashBoard/User/Payment/PaymentModal";
 import useAuth from "../../../hooks/useAuth";
 /* eslint-disable react/prop-types */
-
-
 const BoughtPropertyList = ({ item, isLoading, refetch }) => {
-
   const {
     _id,
     agent_email,
@@ -58,10 +55,6 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
     })
     });
   };
-
-
-
-  
   return (
     <div className=" ">
       <div className="flex items-center justify-between gap-2  py-2 border border-slate-200 rounded-xl mb-4">
@@ -92,7 +85,6 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
               Property Area: {property_area}
             </p>
             <p className="text-[#A2A2A2]">Date: {date}</p>
-            <p className="text-[#A2A2A2]">Date: { _id}</p>
             
           </div>
         </div>
@@ -111,22 +103,16 @@ const BoughtPropertyList = ({ item, isLoading, refetch }) => {
     ></span>
     <span className='relative'>Pay</span>
   </button>
-) : (
-  <p>Transaction ID: {transactionId}</p>
-)}
-
-
-
-          <p className="text-md">Status: <span className="text-blue-400 font-semibold"> {status}</span></p>
+) : status === "Accepted" && transactionId ? 
+  (<p>Transaction ID: {transactionId}</p> ) : ''
+}
+          <p className="text-md">Status: <span className={`font-semibold ${status==='Accepted' ? 'text-blue-400' : status==='Rejected' ? 'text-red-500' : status==='Pending'? 'text-green-500': ''}`}> {status}</span></p>
            
           </div>
         </div>
         <PaymentModal  closeModal={closeModal} isOpen={isOpen} paymentInfo={paymentInfo} 
         ></PaymentModal>
       </div>
-
-
-      
     </div>
   );
 };

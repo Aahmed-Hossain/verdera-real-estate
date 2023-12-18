@@ -12,7 +12,8 @@ const AgentRoute = ({ children }) => {
 
     useEffect(() => {
         if (!isLoading && userRole.role !== 'Agent') {
-            navigate('/dashboard');
+            // navigate('/dashboard'
+            // );
         }
     }, [isLoading, userRole, navigate]);
     if (isLoading) {

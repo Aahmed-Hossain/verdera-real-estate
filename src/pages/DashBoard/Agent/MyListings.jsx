@@ -12,7 +12,7 @@ const MyListings = () => {
   }
   return (
     <>
-    <PageTitle title={'Dashboard | Listings'}></PageTitle>
+    <PageTitle title={'Dashboard | Added Properties'}></PageTitle>
 
       <div className='container mx-auto px-4 sm:px-8'>
         <div className='py-8'>
