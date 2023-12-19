@@ -48,6 +48,7 @@ const MyReview = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      
     </div>
   );
 };

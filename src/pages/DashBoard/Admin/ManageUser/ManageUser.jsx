@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../../../hooks/useAxiosSecure";
 import Loading from "../../../../components/shared/Loading/Loading";
+import PageTitle from "../../../../components/PageTitle/PageTitle";
 
 const ManageUser = () => {
   const {
@@ -216,9 +217,11 @@ const ManageUser = () => {
                 </button>
               )}
             </div>
+            
           </div>
         ))}
       </div>
+      <PageTitle title={"Dashboard | Manage Users"}></PageTitle>
     </div>
   );
 };

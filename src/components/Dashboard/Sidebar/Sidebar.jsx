@@ -12,6 +12,7 @@ import AgentMenu from "../../AgentMenu/AgnetMenu";
 import useRole from "../../../hooks/useRole";
 import UserMenu from "./UserMenu/UserMenu";
 import AdminMenu from "./AdminMenu/AdminMenu";
+import { MdAddToHomeScreen } from "react-icons/md";
 
 const Sidebar = () => {
   const [userRole] = useRole();
@@ -85,6 +86,11 @@ const Sidebar = () => {
           <hr />
 
           <MenuList
+            icon={MdAddToHomeScreen}
+            label="Home"
+            address="/"
+          />
+          <MenuList
             icon={FcSettings}
             label="Profile"
             address="/dashboard/profile"
@@ -97,6 +103,7 @@ const Sidebar = () => {
             <span className="mx-4 font-medium">Logout</span>
           </button>
         </div>
+        
       </div>
     </>
   );

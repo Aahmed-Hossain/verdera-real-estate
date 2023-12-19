@@ -2,6 +2,7 @@ import { useState } from "react";
 import Card from "../../components/Card/Card";
 import Loading from "../../components/shared/Loading/Loading";
 import useProperties from "../../hooks/useProperties";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 const AllProperties = () => {
   const [price, setPrice] = useState("");
@@ -39,7 +40,7 @@ const AllProperties = () => {
       <div className="flex justify-between">
         <div>
           <h1 className="text-3xl font-bold text-green-500">
-            Hundrends of Dream <br /> Under One Roof
+          Find Your Dream  <br />Home Today
           </h1>
         </div>
 
@@ -96,6 +97,7 @@ const AllProperties = () => {
         )))
         }
       </div>
+      <PageTitle title={"Verdera | All Properties"}></PageTitle>
     </div>
   );
 };

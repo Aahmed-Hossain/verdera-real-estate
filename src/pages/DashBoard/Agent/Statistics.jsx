@@ -4,9 +4,9 @@ const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 import { FaHouseUser } from "react-icons/fa";
 import {  FaDollarSign} from "react-icons/fa6";
 import { GiMoneyStack } from "react-icons/gi";
-
-  import useSoldProperties from '../../../hooks/useSoldProperties';
+import useSoldProperties from '../../../hooks/useSoldProperties';
 import useAuth from '../../../hooks/useAuth';
+import PageTitle from '../../../components/PageTitle/PageTitle';
   const Statistics = () => {
     const {user} = useAuth();
     const [soldProperties] = useSoldProperties();
@@ -69,7 +69,7 @@ import useAuth from '../../../hooks/useAuth';
         </div>
       </div>
         <div className='flex items-center justify-center'>
-        <BarChart
+        <BarChart 
       width={500}
       height={300}
       data={data}
@@ -80,7 +80,7 @@ import useAuth from '../../../hooks/useAuth';
         bottom: 5,
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
+      <CartesianGrid strokeDasharray="3 3"/>
       <XAxis dataKey="title" />
       <YAxis />
       <Bar dataKey="price" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
@@ -90,6 +90,7 @@ import useAuth from '../../../hooks/useAuth';
       </Bar>
     </BarChart>
         </div>
+        <PageTitle title={"Dashboard | Statistics"}></PageTitle>
       </div>
     );
   };

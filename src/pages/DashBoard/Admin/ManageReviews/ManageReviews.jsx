@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import useReviews from '../../../../hooks/useReviews';
 import { axiosSecure } from '../../../../hooks/useAxiosSecure';
 import Loading from '../../../../components/shared/Loading/Loading';
+import PageTitle from '../../../../components/PageTitle/PageTitle';
 
 
 const ManageReviews = () => {
@@ -77,6 +78,7 @@ if(isLoading){
           </div>
         ))}
       </div>
+      <PageTitle title={"Dashboard | Manage Reviews"}></PageTitle>
     </div>
   );
 };

@@ -22,8 +22,6 @@ const MyWishList = () => {
     // console.log(wishList);
     return (
         <>
-        <PageTitle title={'Dashboard | WishList'}></PageTitle>
-    
           <div className='container mx-auto px-4 sm:px-8'>
             <div className='py-8'>
               <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
@@ -96,6 +94,7 @@ const MyWishList = () => {
               </div>
             </div>
           </div>
+          <PageTitle title={"Dashboard | My Wish Lists"}></PageTitle>
         </>
     );
 };

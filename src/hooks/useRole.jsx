@@ -1,6 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+
 import { axiosSecure } from "./useAxiosSecure";
 import useAuth from "./useAuth";
+import { useQuery } from "@tanstack/react-query";
 // todo: delete if not use any where
 const useRole = () => {
   const {user} = useAuth();

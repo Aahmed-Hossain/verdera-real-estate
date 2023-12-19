@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { axiosSecure } from '../../../../hooks/useAxiosSecure';
 import useAuth from '../../../../hooks/useAuth';
 import Loading from '../../../../components/shared/Loading/Loading';
+import PageTitle from '../../../../components/PageTitle/PageTitle';
 
 const MyReviews = () => {
     const {user} = useAuth();
@@ -84,6 +85,7 @@ if(isLoading){
           </div>
         ))}
       </div>
+      <PageTitle title={"Dashboard | My Reviews"}></PageTitle>
     </div>
   );
 };

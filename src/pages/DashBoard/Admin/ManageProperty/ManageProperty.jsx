@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosPublic } from "../../../../hooks/useAxiosPublic";
 import ManagePropertyList from "./ManagePropertyList";
+import PageTitle from "../../../../components/PageTitle/PageTitle";
 
 
 
@@ -26,6 +27,7 @@ const ManageProperty = () => {
             manageProperty?.map(item=> <ManagePropertyList key={item._id}
             item={item} isLoading={isLoading} refetch={refetch}></ManagePropertyList>)
         }
+        <PageTitle title={"Dashboard | Manage Properties"}></PageTitle>
     </div>
     );
 };
