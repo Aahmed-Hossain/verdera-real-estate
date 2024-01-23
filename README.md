@@ -44,3 +44,13 @@ Verdera is a real estate website with dashboard interface created with three sep
   - Admin-specific dashboard for managing the entire real estate platform.
   - Monitor and manage user accounts, properties, and agent profiles.
   - Review and moderate user-generated content.
+## Tech Stack
+- React
+- Tailwind
+- DaisyUI
+- React Router
+- Firebase Auth
+- React Firebase hooks
+- Toastify
+- Stripe
+- JSON Web Token
