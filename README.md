@@ -43,13 +43,13 @@ Verdera is a real estate company website. The website offers various functional 
   - View and manage saved properties.
   - Access and update account information.
 
-- **Agent Dashboard:**
+- **Agent Dashboard: [email: agnet1@gmail.com & password: 123456aA!]**
   - Dedicated dashboard for real estate agents.
   - Manage listed properties, including adding new ones and updating existing ones.
   - Track client inquiries and messages.
   - Access performance analytics and reports.
 
-- **Admin Dashboard:**
+- **Admin Dashboard: [email: admin@gmail.com & password: 123456aA!]**
   - Admin-specific dashboard for managing the entire real estate platform.
   - Monitor and manage user accounts, properties, and agent profiles.
   - Review and moderate user-generated content.
