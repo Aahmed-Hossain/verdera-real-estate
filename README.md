@@ -13,9 +13,7 @@ Verdera is a real estate website with dashboard interface created with three sep
 
 ## Features
 
-- **Property Listings:**
-  - Display a searchable and filterable list of available properties.
-  - Provide detailed property information, including price, location, bedrooms, bathrooms, and more.
+- Users can buy properties from verified agents and can pay using valid cards, after successful payment user will get a email notification with details of the bought property & TransactionID..
  
   - **User Accounts:**
   - Allow users to create accounts to save favorite properties and receive updates on new listings.
