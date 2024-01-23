@@ -83,6 +83,3 @@ npm run dev
 
 <p>Bought Property for Users: </p>
 <img src="https://i.ibb.co/tPQW2sL/dashboard-my-Property1.png" width="450px"/>
-
-<p>Home page: </p>
-<img src="https://i.ibb.co/Pt2qz2x/home-verdera.png" width="650px"/>
