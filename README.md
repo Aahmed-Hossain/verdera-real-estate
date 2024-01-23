@@ -1,8 +1,7 @@
-# Verdera Real Estate Website
+# Verdera Real Estate MERN Stack Website.
 
 # [Live Link](https://fir-module51.web.app/)
-
-Verdera is a real estate company website. The website offers various functional features to enhance the user experience and provide comprehensive information about available properties.
+Verdera is a real estate website with dashboard interface created with three separate role Admin, Agent & User.
 
 ## Features
 
