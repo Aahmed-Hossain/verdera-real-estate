@@ -75,14 +75,14 @@ npm run dev
 
 ## Screenshots
 
-<p>Banner Page: </p>
+<p>Agent Dashboard: </p>
 <img src="https://i.ibb.co/z8QD0by/dashboard-agent-dash.png" width="450px"/>
 
-<p>Feature Page: </p>
-<img src="/public/ss/featured.png" width="450px"/>
+<p>Manage Users for Admin: </p>
+<img src="https://i.ibb.co/LQHgCZD/dashboard-user-manage.png" width="450px"/>
 
-<p>PC Builder Page: </p>
-<img src="/public/ss/pc-builder.png" width="450px"/>
+<p>Bought Property for Users: </p>
+<img src="https://i.ibb.co/tPQW2sL/dashboard-my-Property1.png" width="450px"/>
 
-<p>Items Page: </p>
-<img src="/public/ss/items.png" width="450px"/>
+<p>Home page: </p>
+<img src="https://i.ibb.co/Pt2qz2x/home-verdera.png" width="450px"/>
