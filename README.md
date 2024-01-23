@@ -54,7 +54,7 @@ Verdera is a real estate website with dashboard interface created with three sep
 - Toastify
 - Stripe
 - JSON Web Token
-- 
+
 ## Installation
 
 To run the project locally, follow these steps:
