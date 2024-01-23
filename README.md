@@ -1,56 +1,85 @@
-# Verdera Real Estate Website(https://fir-module51.web.app/)
+# Verdera Real Estate MERN Stack Website.
 
-Verdera is a real estate company website. The website offers various functional features to enhance the user experience and provide comprehensive information about available properties.
+## [Live Link](https://fir-module51.web.app/)
+Verdera is a real estate website with dashboard interface created with three separate role Admin, Agent & User.
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Protected Routes](#protected-routes)
+- [Screenshots](#screenshots)
 
 ## Features
 
-- **Property Listings:**
-  - Display a searchable and filterable list of available properties.
-  - Provide detailed property information, including price, location, bedrooms, bathrooms, and more.
+- Users can buy properties from verified agents and can pay using valid cards, after successful payment user will get a email notification with details of the bought property & TransactionID.
+- Admin can make an agent as Fraud so he can't able to add any Properties and all his unSold Properties will be deleted.
+- Admin can add, delete, edit and see all Properties status.
+- Admin can make new Admin & new Agent from dashboard.
+- Only Verified Properties by Admin will be shown in the Site.
+- Also have individual Profile Route for Admins, Agents & Users.
+- Users able to post review for a properties and have right delete the reviews.
+- Users have right to choose price range and agents have free right to accept any offer.
+- Only agents have right to add Properties and able see , edit & delete his Added Properties.
+- Agent able to see statistics of total sold properties, Amount($), Revenue by Recharts.
+- Other Features:
+  - Property Search
+  - Social Login.
+  - client testimonials and reviews.
+  - Recaptcha validation
+  - Strong password validation
  
-  - **User Accounts:**
-  - Allow users to create accounts to save favorite properties and receive updates on new listings.
-
-- **Property Search:**
-  - Implement an advanced search functionality for refining property searches based on criteria like location, price range, and property type.
-
-- **Property Details:**
-  - Individual property pages with high-quality images, detailed descriptions, floor plans, and virtual tours.
-  - Highlight key features and amenities of each property.
-
-
-- **Agent Profiles:**
-  - Profiles for real estate agents with photos, contact information, and a list of properties they represent.
-  - Direct contact option for users seeking assistance from agents.
-
-
-- **Featured Properties:**
-  - Showcase featured or premium properties on the homepage.
-
-- **Testimonials:**
-  - Display client testimonials and reviews to build trust and credibility.
-
-- **Responsive Design:**
-  - Ensure the website is responsive and works seamlessly on various devices.
-
-- **Social Media Integration:**
-  - Include social media links for sharing property listings and engaging with users.
-
-## Individual Dashboards
-
 - **Client Dashboard:**
   - Personalized dashboard for clients after login.
   - View and manage saved properties.
   - Access and update account information.
-
-- **Agent Dashboard:**
+    
+- **Agent Dashboard: [email: agnet1@gmail.com & password: 123456aA!]**
   - Dedicated dashboard for real estate agents.
   - Manage listed properties, including adding new ones and updating existing ones.
-  - Track client inquiries and messages.
   - Access performance analytics and reports.
 
-- **Admin Dashboard:**
+- **Admin Dashboard: [email: admin@gmail.com & password: 123456aA!]**
   - Admin-specific dashboard for managing the entire real estate platform.
   - Monitor and manage user accounts, properties, and agent profiles.
   - Review and moderate user-generated content.
-  - Generate reports on overall platform performance.
+## Tech Stack
+- React
+- Tailwind
+- DaisyUI
+- React Router
+- Firebase Auth
+- React Firebase hooks
+- Toastify
+- Stripe
+- JSON Web Token
+
+## Installation
+
+To run the project locally, follow these steps:
+
+1. Clone the repository from GitHub.
+2. Install dependencies using `npm install`.
+3. Start the development server using `npm run dev`.
+
+```bash
+git clone https://github.com/Aahmed-Hossain/verdera-real-estate
+cd verdera-real-estate
+npm
+npm run dev
+```
+## Protected Routes
+
+- User cant access [Offer Property Page](https://fir-module51.web.app/offerNow/65683fcb223f469e38c97943) without authentication
+
+## Screenshots
+
+<p>Agent Dashboard: </p>
+<img src="https://i.ibb.co/z8QD0by/dashboard-agent-dash.png" width="450px"/>
+
+<p>Manage Users for Admin: </p>
+<img src="https://i.ibb.co/LQHgCZD/dashboard-user-manage.png" width="450px"/>
+
+<p>Bought Property for Users: </p>
+<img src="https://i.ibb.co/tPQW2sL/dashboard-my-Property1.png" width="450px"/>
