@@ -65,11 +65,10 @@ To run the project locally, follow these steps:
 
 ```bash
 git clone https://github.com/Aahmed-Hossain/verdera-real-estate
-```
 cd verdera-real-estate
 npm
 npm run dev
-
+```
 ## Protected Routes
 
 - User cant access [Offer Property Page](https://fir-module51.web.app/offerNow/65683fcb223f469e38c97943) without authentication
