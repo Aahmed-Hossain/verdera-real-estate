@@ -3,6 +3,14 @@
 # [Live Link](https://fir-module51.web.app/)
 Verdera is a real estate website with dashboard interface created with three separate role Admin, Agent & User.
 
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Protected Routes](#protected-routes)
+- [Screenshots](#screenshots)
+
 ## Features
 
 - **Property Listings:**
