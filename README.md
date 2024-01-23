@@ -54,3 +54,18 @@ Verdera is a real estate website with dashboard interface created with three sep
 - Toastify
 - Stripe
 - JSON Web Token
+- 
+## Installation
+
+To run the project locally, follow these steps:
+
+1. Clone the repository from GitHub.
+2. Install dependencies using `npm install`.
+3. Start the development server using `npm run dev`.
+
+```bash
+git clone https://github.com/Aahmed-Hossain/verdera-real-estate
+cd verdera-real-estate
+npm
+npm run dev
+```
