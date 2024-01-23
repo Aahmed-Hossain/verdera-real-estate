@@ -27,7 +27,7 @@ const SocialLogin = () => {
     <div>
       <button
         onClick={handleGoogleLogin}
-        className="rounded-full px-3 py-2 border border-green-600 flex justify-around items-center mb-2 w-full"
+        className="hover:bg-gray-200 cursor-pointer rounded-full px-3 py-2 border border-green-600 flex justify-around items-center mb-2 w-full"
       >
         <img className="h-[1rem] w-[1rem]" src={googleImg} alt="" />
         <span>Continue with Google</span>

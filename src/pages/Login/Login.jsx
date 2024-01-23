@@ -14,7 +14,11 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import { TbFidgetSpinner } from "react-icons/tb";
 
 const Login = () => {
-  const [disable, setDisable] = useState(false);
+  const [disable, setDisable] = useState(true);
+  const [autoFillCredentials, setAutoFillCredentials] = useState({
+    email: "",
+    password: "",
+  });
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -42,8 +46,15 @@ const Login = () => {
     if (validateCaptcha(user_captcha_value)) {
       setDisable(false);
     } else {
-      setDisable(false);
+      setDisable(true);
     }
+  };
+
+  const handleAutoFill = (email, password) => {
+    setAutoFillCredentials({
+      email: email,
+      password: password,
+    });
   };
 
   return (
@@ -63,9 +74,10 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                 defaultValue={autoFillCredentials.email}
                   type="text"
                   name="email"
-                  placeholder="email"
+                  placeholder="Email"
                   className=" border-b border-green-600 w-full py-3 px-3 focus:outline-none bg-transparent"
                 />
               </div>
@@ -74,9 +86,10 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                defaultValue={autoFillCredentials.password}
                   type="password"
                   name="password"
-                  placeholder="password"
+                  placeholder="Password"
                   className="border-b border-green-600 w-full py-3 px-3 focus:outline-none bg-transparent"
                 />
                 <label className="label">
@@ -102,13 +115,10 @@ const Login = () => {
 
               <div className="form-control mt-6 hover:bg-[#39bb4c]  bg-[#2eea4a] text-white font-bold py-2 px-4 w-full">
                 { loading ? <TbFidgetSpinner className="m-auto animate-spin" size={24} /> : (<input
-                  className={`
-                
-                  //  use it for disAble
+                  className={`${
+                    disable ? "bg-opacity-50 cursor-not-allowed" : ""
+                  }
                   `}
-                  // ${
-                  //   disable ? "bg-opacity-50 cursor-not-allowed" : ""
-                  // }
                   type="submit"
                   value="Login"
                   disabled={disable}
@@ -116,9 +126,24 @@ const Login = () => {
               </div>
             </form>
             <p className="divider">OR</p>
+           {/* First Auto-fill button */}
+      <button
+        className="font-semibold hover:bg-gray-200 px-3 py-2 border border-[#36b54a] flex justify-around items-center mb-2 w-full"
+        onClick={() => handleAutoFill('agent1@gmail.com', '123456aA!')}
+      >
+        Login as Agent
+      </button>
+
+      {/* Second Auto-fill button */}
+      <button
+        className="font-semibold hover:bg-gray-200 px-3 py-2 border border-[#36b54a] flex justify-around items-center mb-2 w-full"
+        onClick={() => handleAutoFill('admin@gmail.com', '123456aA!')}
+      >
+        Login as Admin
+      </button>
             <SocialLogin></SocialLogin>
             <button
-              //   onClick={() => hadleSocialLogin(githubLogin)}
+                // onClick={() => hadleSocialLogin(githubLogin)}
               className="rounded-full px-3 py-2 border border-[#36b54a] flex justify-around items-center mb-2 w-full"
             >
               <img className="h-[1.5rem] w-[1.5rem]" src={githubImg} alt="" />
