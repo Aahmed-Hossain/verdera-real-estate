@@ -31,12 +31,12 @@ Verdera is a real estate website with dashboard interface created with three sep
   - Strong password validation
 
 
-# Individual Dashboards
+- # Individual Dashboards
 - **Client Dashboard:**
   - Personalized dashboard for clients after login.
   - View and manage saved properties.
   - Access and update account information.
-  - 
+    
 - **Agent Dashboard: [email: agnet1@gmail.com & password: 123456aA!]**
   - Dedicated dashboard for real estate agents.
   - Manage listed properties, including adding new ones and updating existing ones.
