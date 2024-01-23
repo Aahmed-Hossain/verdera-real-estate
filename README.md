@@ -76,7 +76,7 @@ npm run dev
 ## Screenshots
 
 <p>Banner Page: </p>
-<img src="/public/ss/banner.png" width="450px"/>
+<img src="https://i.ibb.co/z8QD0by/dashboard-agent-dash.png" width="450px"/>
 
 <p>Feature Page: </p>
 <img src="/public/ss/featured.png" width="450px"/>
