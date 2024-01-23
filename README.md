@@ -27,7 +27,8 @@ Verdera is a real estate website with dashboard interface created with three sep
   - Property Search
   - Social Login.
   - client testimonials and reviews.
-  - 
+  - Recaptcha validation
+  - Strong password validation
 
 
 ## Individual Dashboards
