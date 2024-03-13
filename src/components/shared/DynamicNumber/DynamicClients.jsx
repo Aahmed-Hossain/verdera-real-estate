@@ -16,7 +16,7 @@ const DynamicClients = () => {
   }, [number]);
   return (
     <div>
-      <h1><span className='font-bold text-4xl text-green-500'>{number}</span></h1>
+      <h1><span className='font-bold text-4xl text-green-500'>{number}+</span></h1>
     </div>
   );
 };
