@@ -2,7 +2,7 @@ import Banner from "./Banner";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import LatestProperty from "./LatestProperty";
 import About from "./About";
-import Testimony from "../../components/Testimony/Testimony";
+import AgentsInfo from "../../components/AgentsInfo/AgentsInfo";
 import MyReview from "../DashBoard/User/MyReview/MyReview";
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       <LatestProperty></LatestProperty>
       <About></About>
       <MyReview></MyReview>
-      <Testimony></Testimony>
+      <AgentsInfo></AgentsInfo>
       
       
     </div>
