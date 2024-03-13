@@ -11,7 +11,7 @@ const DynamicClients = () => {
         setNumber(number + 1);
       }
     };
-    const intervalId = setInterval(updateNumber, 70);
+    const intervalId = setInterval(updateNumber, 10);
     return () => clearInterval(intervalId);
   }, [number]);
   return (

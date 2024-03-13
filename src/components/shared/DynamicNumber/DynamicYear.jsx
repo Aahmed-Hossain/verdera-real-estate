@@ -11,7 +11,7 @@ const DynamicYear = () => {
         setNumber(number + 1);
       }
     };
-    const intervalId = setInterval(updateNumber, 500);
+    const intervalId = setInterval(updateNumber, 200);
     return () => clearInterval(intervalId);
   }, [number]);
   return (

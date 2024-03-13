@@ -11,7 +11,7 @@ const DynamicProjects = () => {
         setNumber(number + 1);
       }
     };
-    const intervalId = setInterval(updateNumber, 100);
+    const intervalId = setInterval(updateNumber, 50);
     return () => clearInterval(intervalId);
   }, [number]);
   return (
