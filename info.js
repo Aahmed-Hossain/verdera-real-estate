@@ -1,7 +1,7 @@
-import agent1 from '../src/assets/images/logo/staff1.jpg'
-import agent2 from '../src/assets/images/logo/staff2.jpg'
-import agent3 from '../src/assets/images/logo/staff3.jpg'
-import agent4 from '../src/assets/images/logo/staff4.jpg'
+import agent1 from './src/assets/images/logo/staff1.jpg'
+import agent2 from './src/assets/images/logo/staff2.jpg'
+import agent3 from './src/assets/images/logo/staff3.jpg'
+import agent4 from './src/assets/images/logo/staff4.jpg'
 
 export const agents = [
     {

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FaPhoneAlt } from "react-icons/fa";
-import { agents } from "./../../../public/info";
+import { agents } from "../../../info";
 
 const Testimony = () => {
   return (
