@@ -12,7 +12,7 @@ import SubHeading2 from './../../../../components/shared/SubHeading2';
 const MyReview = () => {
   const [reviews] = useReviews();
   return (
-    <div className="my-20">
+    <div className="mt-16">
 <Heading text='Latest Reviews Of Our Valued Customer'/>
 <SubHeading subHeading="Your trusted and Supportive Real Estate Company"/>
 <SubHeading2 subHeading2={"Verdera is committed to providing unparalleled service in the real estate industry<.Whether you're searching for a cozy apartment, a family-friendly house."}/>

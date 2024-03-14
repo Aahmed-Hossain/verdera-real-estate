@@ -34,7 +34,7 @@ const Banner = () => {
               Holds Love
             </h5>
               <button className="border-2 border-green-500 text-green-500 btn btn-xs lg:btn-lg lg:mt-10 hover:text-gray-500">
-              <Link to={'/allProperties'}>View All Properties</Link>
+              <Link to={'/allProperties'}>All Properties</Link>
               </button>
           </div>
         </div>
@@ -42,7 +42,7 @@ const Banner = () => {
       <SwiperSlide>
       <div className='flex justify-around items-center'>
           <div className=' w-1/2 flex items-center justify-center'>
-            <img className='h-[300px] lg:h-[400px]' src={slider1} alt="" />
+            <img className='h-[240px] lg:h-[400px]' src={slider1} alt="" />
           </div>
           <div className="font-primary my-5 pl-8 w-1/2">
             <h5 className="text-xl lg:text-7xl font-bold">
@@ -52,7 +52,7 @@ const Banner = () => {
               Ethics
             </h5>
             <button className="border-2 border-green-500 text-green-500 btn btn-xs lg:btn-lg lg:mt-10 hover:text-gray-500">
-              <Link to={'/allProperties'}>View All Properties</Link>
+              <Link to={'/allProperties'}>All Properties</Link>
               </button>
           </div>
         </div>
