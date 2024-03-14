@@ -1,25 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FaPhoneAlt } from "react-icons/fa";
 import { agents } from "../../../info";
+import Heading from "../shared/Heading";
+import SubHeading from "../shared/SubHeading";
+import SubHeading2 from "../shared/SubHeading2";
 
 const Testimony = () => {
   return (
     <div className="mt-12">
-      <h1 className="text-center text-4xl font-bold my-2">
-        
-        Our Exclusive Agents
-      </h1>
-      <h1 className="text-green-500 text-xl font-semibold mt-2 text-center">
-        
-        Expertise Is Here
-      </h1>
-      <h1 className="text-sm  dark:text-gray-200 text-center my-4">
-        
-        Verdera is committed to providing unparalleled service in the real
-        estate industry. <br /> Whether you're searching for a cozy apartment, a
-        family-friendly house.
-      </h1>
-
+      <Heading text='Our Exclusive Agents'/>
+      <SubHeading subHeading="Expertise Is Here"/>
+      <SubHeading2 subHeading2={`Verdera is committed to providing unparalleled service in the real estate industry.< Whether you're searching for a cozy apartment, a
+        family-friendly house.`} />
       <div className="flex flex-col lg:flex-row w-11/12 mx-auto mt-12 ">
         {/* left div for agnets */}
         <div className="w-1/2 flex flex-col  items-center  space-y-6">

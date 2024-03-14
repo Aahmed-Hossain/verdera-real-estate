@@ -4,13 +4,16 @@ import DynamicAgents from "../../components/shared/DynamicNumber/DynamicAgents";
 import DynamicClients from "../../components/shared/DynamicNumber/DynamicClients";
 import DynamicProjects from "../../components/shared/DynamicNumber/DynamicProjects";
 import DynamicYear from "../../components/shared/DynamicNumber/DynamicYear";
+import Heading from "../../components/shared/Heading";
+import SubHeading from "../../components/shared/SubHeading";
+import SubHeading2 from "../../components/shared/SubHeading2";
 
 const About = () => {
   return (
     <div className="mt-16">
-      <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold my-2"> About Our Legacy In Real Estate History</h1>
-<h1 className="text-green-500 text-xl font-semibold mt-2 text-center"> Your trusted and Supportive Real Estate Company</h1>
-<h1 className="text-sm  dark:text-gray-200 text-center my-4 hidden md:block lg:block"> Verdera is committed to providing unparalleled service in the real estate industry. <br/> Whether you're searching for a cozy apartment, a family-friendly house.</h1>
+     <Heading text=' About Our Legacy In Real Estate History'/>
+     <SubHeading subHeading="Your trusted and Supportive Real Estate Company"/>
+     <SubHeading2 subHeading2={"Verdera is committed to providing unparalleled service in the real estate industry<. Whether you're searching for a cozy apartment, a family-friendly house."}/>
       <div className="mt-6 flex flex-col md:flex-col lg:flex-row gap-0 md:gap-4 lg:gap-6 ">
       <div className="w-full md:w-full lg:w-1/2">
       <div className="">

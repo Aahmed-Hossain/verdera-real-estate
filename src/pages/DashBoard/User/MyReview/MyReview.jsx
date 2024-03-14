@@ -5,14 +5,17 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import useReviews from "../../../../hooks/useReviews";
 import img from '../../../../assets/images/logo/quote-left 1.jpg'
+import Heading from "../../../../components/shared/Heading";
+import SubHeading from './../../../../components/shared/SubHeading';
+import SubHeading2 from './../../../../components/shared/SubHeading2';
 
 const MyReview = () => {
   const [reviews] = useReviews();
   return (
     <div className="my-20">
-<h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold my-2"> Latest Reviews Of Our Valued Customer</h1>
-<h1 className="text-green-500 text-xl font-semibold mt-2 text-center"> Your Quatations Here</h1>
-<h1 className="text-sm  text-center my-4 hidden md:block lg:block"> Verdera is committed to providing unparalleled service in the real estate industry. <br/> Whether you're searching for a cozy apartment, a family-friendly house.</h1>
+<Heading text='Latest Reviews Of Our Valued Customer'/>
+<SubHeading subHeading="Your trusted and Supportive Real Estate Company"/>
+<SubHeading2 subHeading2={"Verdera is committed to providing unparalleled service in the real estate industry<.Whether you're searching for a cozy apartment, a family-friendly house."}/>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper my-12">
         {reviews.map((review) => (
           <SwiperSlide key={review._id}>
