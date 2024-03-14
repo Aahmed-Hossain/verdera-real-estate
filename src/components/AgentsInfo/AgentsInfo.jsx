@@ -7,7 +7,7 @@ import SubHeading2 from "../shared/SubHeading2";
 
 const AgentsInfo = () => {
   return (
-    <div className="border">
+    <div>
       <Heading text='Our Exclusive Agents'/>
       <SubHeading subHeading="Expertise Is Here"/>
       <SubHeading2 subHeading2={`Verdera is committed to providing unparalleled service in the real estate industry.< Whether you're searching for a cozy apartment, a

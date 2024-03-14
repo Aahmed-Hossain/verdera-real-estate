@@ -6,12 +6,11 @@ import MiddleNavLinks from '../shared/MiddleNavLinks/MiddleNavLinks'
 const Navbar = () => {
   return (
     <div className='fixed w-11/12 py-2 bg-white z-10 shadow-sm'>
-      <div className=''>
-          <div className='flex flex-row  items-center justify-between gap-3 md:gap-'>
+          <div className='flex flex-row  items-center justify-between gap-3 '>
             {/* Logo */}
             <Link to='/'>
               <img
-                className='md:block w-[13rem]'
+                className='w-[4rem] md:w-[8rem] lg:w-[12rem]'
                 src={logoImg}
                 alt='logo' 
               />
@@ -24,7 +23,6 @@ const Navbar = () => {
             <MenuDropdown />
           </div>
       </div>
-    </div>
   )
 }
 
