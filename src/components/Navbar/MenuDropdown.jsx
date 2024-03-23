@@ -8,15 +8,16 @@ import Swal from "sweetalert2";
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigateToLogin = useNavigate()
-  const { user,logout } = useAuth();
-  const handleLogout = () => {
-    logout().then(() => {
-        Swal.fire("Nice!", "You logged out successfully!", "success");
-        navigateToLogin('/login');
-      })
-      .catch(err => {
-        Swal.fire("Oops!", err.message, "error");
-      });
+  const { user,logOut } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logOut(); 
+      Swal.fire("Nice!", "You logged out successfully!", "success");
+      navigateToLogin('/login');
+    } catch (err) {
+      Swal.fire("Oops!", err.message, "error");
+    }
   }
   return (
     <div className="relative">

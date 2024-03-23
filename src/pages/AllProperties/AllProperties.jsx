@@ -15,7 +15,7 @@ const AllProperties = () => {
   }
   const handleSearch = async () => {
     try {
-      const encodedSearchTerm = encodeURIComponent(searchTerm); // Encode the search term
+      const encodedSearchTerm = encodeURIComponent(searchTerm);
       const response = await fetch(
         `https://real-estate-company-server.vercel.app/allProperties/${encodedSearchTerm}`
       );
@@ -35,22 +35,21 @@ const AllProperties = () => {
   };
   return (
     <div className="pt-[5rem]">
-      {/* filtering div */}
+      {/* filtering container */}
 
-      <div className="flex justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-green-500">
+      <div className="flex flex-col md:flex-row lg:flex-row  gap-2 justify-between mb-2">
+        <div className="w-full">
+          <h1 className="text-2xl md:text-xl lg:text-3xl font-bold text-green-500">
           Find Your Dream  <br />Home Today
           </h1>
         </div>
-
         {/* serch option */}
-        <div className="flex items-center border-2 border-green-500 rounded-xl p-2">
+        <div className="flex items-center border-2 border-green-500 rounded-xl p-2 w-full">
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={handleKeyPress} // Call handleSearch when Enter key is pressed
+            onKeyPress={handleKeyPress} // handleSearch when Enter key is pressed
             placeholder="Search Your Property"
             className="flex-1 px-4 py-2 border-none focus:outline-none"
           />
@@ -74,10 +73,9 @@ const AllProperties = () => {
         </div>
         {/*  sorting  by price */}
 
-
-        <div className="border-2 border-green-500 rounded-xl p-2">
+        <div className="border-2 border-green-500 rounded-xl p-2 w-full">
           <select
-            className="flex-1 px-4 py-2 border-none focus:outline-none"
+            className="flex-1 px-4 py-2 border-none focus:outline-none w-full"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           >

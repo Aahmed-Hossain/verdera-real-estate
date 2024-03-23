@@ -54,7 +54,7 @@ const Card = ({ item,isLoading }) => {
                 {agent_email}
               </p>
             </div>
-            <div className="border-l-2 border-green-500 ml-3 text-xl">
+            <div className="border-l-2 border-green-500 ml-0 md:ml-3 lg:ml-0 xl:ml-3 text-xl">
               <h2 className="text-[#33333380] mx-2">Agent</h2>
             </div>
           </div>

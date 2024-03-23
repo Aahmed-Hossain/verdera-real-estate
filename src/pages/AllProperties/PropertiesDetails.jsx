@@ -78,16 +78,16 @@ const PropertiesDetails = () => {
   return (
     <div className="mb-8 pt-[5rem]">
       <PageTitle title={"Verdera | Property Details"}></PageTitle>
-      <h2 className="font-extrabold text-center uppercase text-[#61d473] my-4 text-4xl">
+      <h2 className="font-extrabold text-center uppercase text-[#61d473] my-4 text-3xl md:text-4xl lg:text-5xl">
         {property_category}
       </h2>
       {/* upper div */}
       <div className="w-full ">
         <div className="flex justify-between ">
-          <h2 className="font-extrabold text-4xl mb-2">{property_title}</h2>
+          <h2 className="font-extrabold text-xl md:text-4xl lg:text-4xl">{property_title}</h2>
           <button 
           onClick={handleWishList}
-          className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md">
+          className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md hidden md:block lg:block hover:text-white">
             <p className="font-semibold">Wish List</p>
             <h3 className="text-2xl font-bold">
               <CiBookmarkCheck></CiBookmarkCheck>
@@ -103,7 +103,7 @@ const PropertiesDetails = () => {
         </div>
         <div className="relative">
           <img
-            className="rounded-xl h-[30rem] w-full"
+            className="rounded-xl h-[17rem] md:h-[30rem] w-full"
             src={property_image}
             alt=""
           />
@@ -118,7 +118,7 @@ const PropertiesDetails = () => {
         <div className=" mx-auto space-y-3">
           <div className="flex items-center gap-x-2 my-3 ">
             <img
-              className="object-cover w-16 h-16 rounded-full"
+              className="object-cover w-16  h-16 rounded-full"
               src={agent_image}
               alt=""
             />
@@ -154,16 +154,26 @@ const PropertiesDetails = () => {
         <div className=" flex mx-auto">
           <Link
             to={`/offerNow/${_id}`}
-            className="my-2 px-16 mx-auto py-2 da font-bold border-2 border-gray-600 bg-[#61d473] rounded-md cursor-pointer text-xl text-white dark:text-gray-200"
+            className="my-2 py-2 h-[3rem] w-[10rem] text-center  mx-auto  font-bold border-2 border-gray-600 bg-[#61d473] rounded-md cursor-pointer text-white text-xl hover:text-2xl "
           >
             Offer Now
           </Link>
         </div>
       </div>
-      <div className="flex justify-end text-white">
+      <div className="flex justify-between md:justify-end">
+{/* wish list button for small device only */}
+      <button 
+          onClick={handleWishList}
+          className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md visible md:hidden lg:hidden hover:text-white">
+            <p className="font-semibold">Mark Wish List</p>
+            <h3 className="text-2xl font-bold">
+              <CiBookmarkCheck></CiBookmarkCheck>
+            </h3>
+          </button>
+
           <button
           onClick={()=> setIsOpen(true)}
-          className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md">
+          className="flex flex-col justify-center items-center bg-[#3ee757] px-3 hover:bg-green-400 cursor-pointer rounded-md text-white">
             <p className="font-semibold">Leave a Review</p>{" "}
             <h3 className="text-2xl  font-bold">
               <MdOutlineRateReview ></MdOutlineRateReview>
