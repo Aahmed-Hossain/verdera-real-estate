@@ -59,12 +59,12 @@ const OfferNow = () => {
     <div className="bg-base-00 pt-[4.5rem]">
       <PageTitle title={"Verdera | Offer Now"}></PageTitle>
       <div className=" ">
-      <h2 className="text-center flex justify-center my-4  font-bold text-4xl text-[#61d473]">
+      <h2 className="text-center flex justify-center my-4  font-bold text-xl md:text-3xl lg:text-4xl text-[#61d473]">
         {property_title || data?.property_title }
       </h2>
       </div>
-      <div className="relative h-[20rem]">
-        <img src={property_image || data?.property_image} className="h-[20rem] w-full rounded-xl" />
+      <div className="relative  h-[16rem] md:h-[22rem]">
+        <img src={property_image || data?.property_image} className="h-[16rem] md:h-[22rem] w-full rounded-xl" />
         <div className="absolute inset-0 bg-black opacity-10 rounded-xl"></div>
       </div>
       
